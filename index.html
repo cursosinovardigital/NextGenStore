@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Next Gen Store | Tecnologia, Acessórios e Gadgets</title>
+  <title>Next Gen Store | Tech & Acessórios Premium</title>
   
   <!-- Tailwind CSS & Font Awesome -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -27,8 +27,27 @@
               600: '#4f46e5',
               700: '#4338ca',
               accent: '#06b6d4',
-              green: '#10b981',
+              emerald: '#10b981',
               gold: '#f59e0b'
+            }
+          },
+          animation: {
+            'marquee': 'marquee 25s linear infinite',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+            'float': 'float 4s ease-in-out infinite',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+              '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
             }
           }
         }
@@ -38,7 +57,7 @@
 
   <style>
     body {
-      background-color: #0b0f19;
+      background-color: #080c14;
       color: #f3f4f6;
     }
     .custom-scrollbar::-webkit-scrollbar {
@@ -46,10 +65,10 @@
       height: 6px;
     }
     .custom-scrollbar::-webkit-scrollbar-track {
-      background: #111827;
+      background: #0f172a;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #374151;
+      background: #334155;
       border-radius: 9999px;
     }
     .line-clamp-2 {
@@ -58,65 +77,82 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+    /* Pausa o banner no hover */
+    .marquee-container:hover .animate-marquee {
+      animation-play-state: paused;
+    }
   </style>
 </head>
-<body class="antialiased selection:bg-brand-500 selection:text-white pb-24">
+<body class="antialiased selection:bg-brand-500 selection:text-white pb-28">
 
-  <!-- AVISO DE TOPO -->
-  <div class="bg-gradient-to-r from-brand-700 via-brand-600 to-indigo-800 text-white text-xs font-semibold py-2 px-4 text-center tracking-wide">
-    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
-      <span class="inline-block animate-pulse w-2 h-2 rounded-full bg-emerald-400"></span>
-      <span>PRONTA ENTREGA NA REGIÃO | DESCONTO ESPECIAL NO PIX À VISTA</span>
+  <!-- 1. FAIXA EM MOVIMENTO INFINITO (TICKER MARQUEE) -->
+  <div class="bg-gradient-to-r from-brand-700 via-indigo-600 to-brand-700 border-b border-indigo-500/30 overflow-hidden whitespace-nowrap marquee-container py-2.5 relative z-50">
+    <div class="flex animate-marquee text-[11px] font-black tracking-wider text-white uppercase gap-8 items-center">
+      <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-300 animate-bounce"></i> DESCONTO EXCLUSIVO NO PIX À VISTA</span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-cyan-300"></i> ENTREGA EXPRESSA NA REGIÃO OU RETIRADA</span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-shield-check text-emerald-300"></i> GARANTIA TOTAL EM TODOS OS ITENS</span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-emerald-400"></i> ATENDIMENTO DIRETO NO WHATSAPP</span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-300 animate-bounce"></i> DESCONTO EXCLUSIVO NO PIX À VISTA</span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-cyan-300"></i> ENTREGA EXPRESSA NA REGIÃO OU RETIRADA</span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-shield-check text-emerald-300"></i> GARANTIA TOTAL EM TODOS OS ITENS</span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-emerald-400"></i> ATENDIMENTO DIRETO NO WHATSAPP</span>
     </div>
   </div>
 
-  <!-- CABEÇALHO -->
-  <header class="sticky top-0 z-40 bg-[#0f172a]/95 backdrop-blur-md border-b border-gray-800/80 shadow-lg">
+  <!-- CABEÇALHO MODERNO -->
+  <header class="sticky top-0 z-40 bg-[#0a0f1d]/90 backdrop-blur-xl border-b border-gray-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
       <!-- LOGO -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 via-indigo-500 to-brand-accent p-0.5 shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
-          <div class="w-full h-full bg-[#0f172a] rounded-[10px] flex items-center justify-center">
-            <i class="fa-solid fa-bolt text-brand-accent text-xl"></i>
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-accent p-0.5 shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#0a0f1d] rounded-[10px] flex items-center justify-center">
+            <i class="fa-solid fa-bolt text-brand-accent text-xl group-hover:rotate-12 transition-transform"></i>
           </div>
         </div>
         <div>
-          <span class="text-xl font-extrabold tracking-tight text-white block leading-none">
+          <span class="text-xl font-black tracking-tight text-white block leading-none">
             NEXT GEN<span class="text-brand-accent"> STORE</span>
           </span>
-          <span class="text-[10px] font-medium text-gray-400 tracking-widest uppercase">Tecnologia & Acessórios</span>
+          <span class="text-[9px] font-bold text-gray-400 tracking-widest uppercase">Tech & Accessories</span>
         </div>
       </a>
 
-      <!-- BUSCA RÁPIDA -->
+      <!-- BUSCA DINÂMICA -->
       <div class="hidden md:flex flex-1 max-w-md mx-6">
         <div class="relative w-full">
-          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-xs"></i>
           <input 
             type="text" 
             id="searchInput"
             oninput="handleSearch(this.value)"
-            placeholder="Buscar por produto, marca ou função..." 
-            class="w-full pl-10 pr-4 py-2 bg-gray-900/80 border border-gray-700/80 rounded-xl text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all">
+            placeholder="Buscar por produto, código ou benefício..." 
+            class="w-full pl-9 pr-4 py-2 bg-gray-900/90 border border-gray-800 rounded-xl text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all">
         </div>
       </div>
 
-      <!-- AÇÕES / CONTATO -->
+      <!-- BOTÕES DE CONTATO & CARRINHO -->
       <div class="flex items-center gap-3">
         <button 
           onclick="openConfigModal()" 
-          title="Configurar WhatsApp"
-          class="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-gray-300 bg-gray-800/80 hover:bg-gray-700 border border-gray-700 rounded-xl transition-colors">
+          class="flex items-center gap-2 px-3 py-2 text-xs font-bold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-emerald-500/50 rounded-xl transition-all">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
           <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
-          <span class="hidden sm:inline" id="headerWhatsappLabel">Configurar WhatsApp</span>
+          <span class="hidden sm:inline" id="headerWhatsappLabel">Meu WhatsApp</span>
         </button>
 
         <button 
           onclick="toggleCartDrawer()" 
-          class="relative p-2.5 bg-gray-800/80 hover:bg-gray-700 text-white rounded-xl border border-gray-700 transition-all">
-          <i class="fa-solid fa-cart-shopping text-base"></i>
-          <span id="cartCountBadge" class="absolute -top-1.5 -right-1.5 bg-brand-accent text-slate-950 font-black text-[11px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#0f172a] hidden">
+          class="relative p-2.5 bg-gray-900 hover:bg-gray-800 text-white rounded-xl border border-gray-800 hover:border-brand-500/50 transition-all">
+          <i class="fa-solid fa-cart-shopping text-sm"></i>
+          <span id="cartCountBadge" class="absolute -top-1.5 -right-1.5 bg-brand-accent text-slate-950 font-black text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#0a0f1d] hidden">
             0
           </span>
         </button>
@@ -124,162 +160,80 @@
     </div>
   </header>
 
-  <!-- BANNER HERO PRINCIPAL -->
-  <section class="relative overflow-hidden bg-gradient-to-b from-[#111827] to-[#0b0f19] border-b border-gray-800/60 py-12 md:py-16">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:16px_16px]"></div>
-    
+  <!-- 2. HERO DINÂMICO COM SLIDER AUTOMÁTICO EM MOVIMENTO -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-[#0e1628] via-[#0a0f1d] to-[#080c14] border-b border-gray-800/80 py-10 md:py-16">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-600/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+    <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-brand-accent/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow" style="animation-delay: 1.5s;"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-accent text-xs font-semibold">
-            <i class="fa-solid fa-fire text-amber-400"></i>
-            PRODUTO MAIS VENDIDO DA SEMANA
-          </div>
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
-            Máquina Dragão Vintage <br class="hidden sm:inline">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500">
-              Profissional com Visor LCD
-            </span>
-          </h1>
-          <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
-            Corpo em metal trabalhado em alto relevo, motor potente de 5W com corte afiado em lâmina T, bateria de lítio recarregável USB-C e display numérico em LED com indicação exata de bateria.
-          </p>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center" id="heroDynamicSlide">
+        <!-- Renderizado dinamicamente pelo slider -->
+      </div>
 
-          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-            <div>
-              <div class="text-xs text-gray-400 font-medium">Preço à vista no Pix</div>
-              <div class="text-3xl font-extrabold text-emerald-400">R$ 49,90</div>
-            </div>
-            <div class="h-10 w-px bg-gray-800 hidden sm:block"></div>
-            <button 
-              onclick="buyDirectWhatsApp(1)"
-              class="px-6 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-sm rounded-xl shadow-lg shadow-emerald-500/20 flex items-center gap-2.5 transition-all transform active:scale-95">
-              <i class="fa-brands fa-whatsapp text-lg"></i>
-              Comprar Agora no WhatsApp
-            </button>
-            <button 
-              onclick="openProductModal(1)"
-              class="px-5 py-3.5 bg-gray-800/90 hover:bg-gray-700 text-gray-200 font-semibold text-sm rounded-xl border border-gray-700 flex items-center gap-2 transition-all">
-              <i class="fa-solid fa-circle-info"></i>
-              Ver Detalhes e Fotos
-            </button>
-          </div>
-        </div>
-
-        <!-- FOTO DE DESTAQUE DO HERO -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="relative group cursor-pointer" onclick="openProductModal(1)">
-            <div class="absolute -inset-1 bg-gradient-to-r from-amber-500/30 to-brand-accent/30 rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition duration-500"></div>
-            <div class="relative bg-gray-900 border border-amber-500/30 rounded-2xl p-4 shadow-2xl max-w-sm">
-              <img 
-                src="https://www.mirao.com.br/media/catalog/product/v/i/visornv_1_.webp" 
-                alt="Máquina Dragão com Visor Digital LCD"
-                class="w-full h-80 object-contain rounded-xl transform group-hover:scale-105 transition-transform duration-300">
-              <div class="mt-3 flex items-center justify-between text-xs text-gray-400 border-t border-gray-800 pt-3">
-                <span class="flex items-center gap-1.5 text-amber-400 font-semibold">
-                  <i class="fa-solid fa-star"></i> 4.9 (Mais de 500 avaliações)
-                </span>
-                <span class="text-emerald-400 font-bold">Pronta Entrega</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <!-- INDICADORES DO SLIDER EM MOVIMENTO -->
+      <div class="flex items-center justify-center gap-3 mt-8" id="sliderDots">
+        <!-- Gerado via JS -->
       </div>
     </div>
   </section>
 
-  <!-- BARRA DE VANTAGENS -->
-  <div class="border-b border-gray-800/80 bg-[#0d1322]">
-    <div class="max-w-7xl mx-auto px-4 py-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center sm:text-left">
-      <div class="flex items-center gap-3 justify-center sm:justify-start">
-        <i class="fa-solid fa-truck-fast text-brand-accent text-xl"></i>
-        <div>
-          <h4 class="text-xs font-bold text-gray-200">Entrega Ágil</h4>
-          <p class="text-[11px] text-gray-400">Envio imediato ou retirada</p>
-        </div>
-      </div>
-      <div class="flex items-center gap-3 justify-center sm:justify-start">
-        <i class="fa-solid fa-shield-halved text-emerald-400 text-xl"></i>
-        <div>
-          <h4 class="text-xs font-bold text-gray-200">Garantia Total</h4>
-          <p class="text-[11px] text-gray-400">Produtos testados antes do envio</p>
-        </div>
-      </div>
-      <div class="flex items-center gap-3 justify-center sm:justify-start">
-        <i class="fa-brands fa-pix text-teal-400 text-xl"></i>
-        <div>
-          <h4 class="text-xs font-bold text-gray-200">Desconto no Pix</h4>
-          <p class="text-[11px] text-gray-400">Melhor preço à vista</p>
-        </div>
-      </div>
-      <div class="flex items-center gap-3 justify-center sm:justify-start">
-        <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
-        <div>
-          <h4 class="text-xs font-bold text-gray-200">Atendimento 1 a 1</h4>
-          <p class="text-[11px] text-gray-400">Tire dúvidas no WhatsApp</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONTEÚDO PRINCIPAL / VITRINE -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+  <!-- VITRINE PRINCIPAL -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
     
-    <!-- CONTROLE E CATEGORIAS -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+    <!-- BARRA DE CONTROLE E CATEGORIAS -->
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
       <div>
-        <h2 class="text-2xl font-black text-white tracking-tight">Catálogo de Ofertas</h2>
-        <p class="text-xs text-gray-400">Selecione o produto desejado para ver detalhes e fotos reais</p>
+        <div class="inline-flex items-center gap-2 text-brand-accent text-xs font-black uppercase tracking-widest mb-1">
+          <span class="w-2 h-2 rounded-full bg-brand-accent"></span> Catálogo Pronto para Envio
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Produtos em Destaque</h2>
       </div>
 
-      <!-- FILTRO DE CATEGORIAS -->
-      <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 custom-scrollbar" id="categoryContainer">
+      <!-- BOTÕES DE FILTRO -->
+      <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 custom-scrollbar" id="categoryContainer">
         <button 
           onclick="filterCategory('todos')" 
           data-category="todos"
-          class="category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20 whitespace-nowrap">
-          Todos os Produtos
+          class="category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-lg shadow-brand-500/20 whitespace-nowrap">
+          Todos os Itens
         </button>
         <button 
           onclick="filterCategory('barbearia')" 
           data-category="barbearia"
-          class="category-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 whitespace-nowrap">
-          Cuidados & Barbearia
+          class="category-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-gray-900 text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800 whitespace-nowrap">
+          Máquinas & Barba
         </button>
         <button 
           onclick="filterCategory('smart-home')" 
           data-category="smart-home"
-          class="category-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 whitespace-nowrap">
-          Rastreadores & GPS
+          class="category-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-gray-900 text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800 whitespace-nowrap">
+          Rastreadores GPS
         </button>
         <button 
           onclick="filterCategory('veicular')" 
           data-category="veicular"
-          class="category-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 whitespace-nowrap">
-          Acessórios Veiculares
+          class="category-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-gray-900 text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800 whitespace-nowrap">
+          Acessórios Carro
         </button>
         <button 
           onclick="filterCategory('audio')" 
           data-category="audio"
-          class="category-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 whitespace-nowrap">
-          Áudio & Fones
+          class="category-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-gray-900 text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800 whitespace-nowrap">
+          Fones Sem Fio
         </button>
       </div>
     </div>
 
     <!-- GRADE DE PRODUTOS -->
-    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <!-- Inserido dinamicamente via JS -->
     </div>
 
   </main>
 
-  <!-- MODAL DE DETALHES DO PRODUTO (COM GALERIA DE FOTOS REAIS) -->
-  <div id="productModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-gray-900 border border-gray-800 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar shadow-2xl relative">
-      
+  <!-- MODAL DE PRODUTO COM GALERIA COMPLETA -->
+  <div id="productModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-gray-900 border border-gray-800 rounded-3xl max-w-3xl w-full max-h-[92vh] overflow-y-auto custom-scrollbar shadow-2xl relative">
       <button 
         onclick="closeProductModal()"
         class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-gray-800/80 hover:bg-gray-700 text-gray-400 hover:text-white flex items-center justify-center transition-colors">
@@ -287,34 +241,31 @@
       </button>
 
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 p-6 sm:p-8" id="modalProductContent">
-        <!-- Renderizado dinamicamente com a galeria -->
+        <!-- Renderizado dinamicamente -->
       </div>
     </div>
   </div>
 
-  <!-- DRAWER LATERAL DO CARRINHO -->
+  <!-- DRAWER DO CARRINHO -->
   <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
-    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
     <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
       <div class="w-screen max-w-md bg-gray-900 border-l border-gray-800 flex flex-col shadow-2xl">
-        
         <div class="p-5 border-b border-gray-800 flex items-center justify-between">
           <div class="flex items-center gap-2">
             <i class="fa-solid fa-bag-shopping text-brand-accent"></i>
-            <h3 class="font-bold text-white text-base">Seu Pedido</h3>
+            <h3 class="font-bold text-white text-base">Itens Selecionados</h3>
           </div>
           <button onclick="toggleCartDrawer()" class="text-gray-400 hover:text-white text-lg">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
 
-        <div id="cartItemList" class="flex-1 overflow-y-auto p-5 space-y-4 custom-scrollbar">
-          <!-- Itens do carrinho -->
-        </div>
+        <div id="cartItemList" class="flex-1 overflow-y-auto p-5 space-y-4 custom-scrollbar"></div>
 
-        <div class="p-5 border-t border-gray-800 bg-gray-950/80 space-y-3">
+        <div class="p-5 border-t border-gray-800 bg-gray-950 space-y-3">
           <div class="flex items-center justify-between text-sm">
-            <span class="text-gray-400">Total no Pix:</span>
+            <span class="text-gray-400">Subtotal Pix:</span>
             <span id="cartTotalPrice" class="text-xl font-black text-emerald-400">R$ 0,00</span>
           </div>
           <button 
@@ -324,121 +275,112 @@
             Finalizar Pedido no WhatsApp
           </button>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- MODAL DE CONFIGURAÇÃO DE WHATSAPP -->
-  <div id="configModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <!-- MODAL CONFIGURAR WHATSAPP -->
+  <div id="configModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-gray-900 border border-gray-800 rounded-2xl max-w-sm w-full p-6 shadow-2xl space-y-4">
       <h3 class="text-base font-bold text-white flex items-center gap-2">
         <i class="fa-brands fa-whatsapp text-emerald-400"></i>
-        Configurar Número do WhatsApp
+        WhatsApp de Vendas
       </h3>
       <p class="text-xs text-gray-400 leading-relaxed">
-        Digite o DDD e o número para onde os pedidos serão enviados (Ex.: 11999998888). O número fica salvo no seu navegador.
+        Digite seu número com DDD (ex: 11999998888). As mensagens de compras serão enviadas diretamente para ele.
       </p>
       <input 
         type="text" 
         id="whatsappInput" 
         placeholder="11999998888" 
-        class="w-full px-3.5 py-2.5 bg-gray-950 border border-gray-700 rounded-xl text-sm text-white focus:outline-none focus:border-brand-500">
+        class="w-full px-3.5 py-2.5 bg-gray-950 border border-gray-700 rounded-xl text-sm text-white focus:outline-none focus:border-brand-accent">
       
       <div class="flex gap-2 pt-2">
-        <button 
-          onclick="closeConfigModal()" 
-          class="flex-1 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-xl text-xs font-semibold">
-          Cancelar
-        </button>
-        <button 
-          onclick="saveWhatsAppNumber()" 
-          class="flex-1 py-2 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-bold">
-          Salvar
-        </button>
+        <button onclick="closeConfigModal()" class="flex-1 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-xl text-xs font-semibold">Cancelar</button>
+        <button onclick="saveWhatsAppNumber()" class="flex-1 py-2 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-bold">Salvar</button>
       </div>
     </div>
   </div>
 
-  <!-- SCRIPT COM O BANCO DE PRODUTOS E LÓGICA COMPLETA -->
+  <!-- JAVASCRIPT COMPLETO E ESTRUTURA DOS PRODUTOS -->
   <script>
-    // LISTA DE PRODUTOS COM AS FOTOS E ESPECIFICAÇÕES REAIS
+    // PRODUTOS CONFIGURADOS COM OS NOMES EXATOS DA PASTA ./img/
     const PRODUCTS = [
       {
         id: 1,
         code: "MAQ-DISPLAY",
-        name: "Máquina Dragão Profissional com Visor Digital LCD",
+        name: "Máquina Dragão Vintage Profissional com Visor LCD",
         category: "barbearia",
         badge: "Campeão de Vendas",
         badgeColor: "bg-amber-500/20 text-amber-400 border border-amber-500/30",
         pricePix: 49.90,
         priceOriginal: 79.90,
-        mainImage: "https://www.mirao.com.br/media/catalog/product/v/i/visornv_1_.webp",
+        mainImage: "./img/visornv_1_.webp",
         gallery: [
-          "https://www.mirao.com.br/media/catalog/product/v/i/visornv_1_.webp",
-          "https://http2.mlstatic.com/D_NQ_NP_2X_720991-MLB114711268409_072026-F.webp",
-          "https://www.mirao.com.br/media/catalog/product/v/i/visornv_2_.webp",
-          "https://www.mirao.com.br/media/catalog/product/v/i/visornv_3_.webp",
-          "https://www.mirao.com.br/media/catalog/product/v/i/visornv_5_.webp"
+          "./img/visornv_1_.webp",
+          "./img/D_NQ_NP_2X_720991-MLB114711268409_072026-F-maquina-de-cortar-cabelo-profissional-barbear-com-visor-bom.webp",
+          "./img/visornv_2_.webp",
+          "./img/visornv_3_.webp",
+          "./img/visornv_5_.webp"
         ],
-        shortDesc: "Acabamento retrô em metal dourado, display LCD com carga em tempo real, lâmina em T afiada e bateria recarregável USB-C.",
+        shortDesc: "Corpo em metal trabalhado em alto relevo, visor LCD com status de bateria, corte preciso em lâmina T e recarga rápida Tipo-C.",
         specs: [
-          "Display Digital em LED com % de bateria",
-          "Lâmina em T de aço de alta precisão",
+          "Display Digital em LED com % exata de carga",
+          "Lâmina T em aço carbono de alta durabilidade",
           "Motor de 5W silencioso e potente",
-          "Bateria de longa duração: até 120 min de uso",
-          "Carregamento rápido via USB Tipo-C",
-          "Acompanha 3 pentes guia (1mm, 2mm, 3mm), óleo e escovinha"
+          "Bateria de longa duração: até 120 min contínuos",
+          "Carregamento rápido USB Tipo-C",
+          "Acompanha pentes guia (1mm, 2mm, 3mm), óleo e escova"
         ]
       },
       {
         id: 2,
         code: "BA-DW347",
-        name: "Mini Rastreador GPS Smart Tag Basike (Apple Buscar)",
+        name: "Mini Rastreador GPS Smart Tag Basike (Apple Find My)",
         category: "smart-home",
         badge: "Alta Procura",
         badgeColor: "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30",
         pricePix: 79.90,
         priceOriginal: 119.90,
-        mainImage: "https://www.mirao.com.br/media/catalog/product/3/3/337nv_1_.webp",
+        mainImage: "./img/337nv_1_.webp",
         gallery: [
-          "https://www.mirao.com.br/media/catalog/product/3/3/337nv_1_.webp",
-          "https://www.mirao.com.br/media/catalog/product/3/3/337nv_2_.webp",
-          "https://www.mirao.com.br/media/catalog/product/3/3/337nv_3_.webp",
-          "https://www.mirao.com.br/media/catalog/product/3/3/337nv_4_.webp",
-          "https://www.mirao.com.br/media/catalog/product/3/3/337nv_5_.webp"
+          "./img/337nv_1_.webp",
+          "./img/337nv_2_.webp",
+          "./img/337nv_3_.webp",
+          "./img/337nv_4_.webp",
+          "./img/337nv_5_.webp"
         ],
-        shortDesc: "Localizador inteligente compatível direto com o app Buscar (Find My) do iPhone. Ideal para chaves, bolsas, carteiras e veículos.",
+        shortDesc: "Localizador inteligente integrado nativamente ao app Buscar do iPhone. Ideal para carros, motos, chaves, bolsas e malas.",
         specs: [
-          "Conexão nativa com o app Buscar (Find My) da Apple",
-          "Sem mensalidades nem taxas ocultas",
-          "Resistência a água e poeira certificada IPX5",
-          "Alerta sonoro com aviso de distanciamento",
-          "Bateria substituível CR2032 de até 1 ano de duração",
-          "Design ultra compacto com orifício para chaveiro"
+          "Integração nativa com o app Buscar (Apple Find My)",
+          "Sem mensalidade nem necessidade de chip telefônico",
+          "Certificação IPX5 resistente a poeira e respingos",
+          "Alerta sonoro com aviso ao se afastar do objeto",
+          "Bateria substituível tipo moeda CR2032 já inclusa",
+          "Design compacto ultrafino"
         ]
       },
       {
         id: 3,
         code: "KA-C108",
-        name: "Carregador Veicular com Bluetooth e Rádio FM Kapbom",
+        name: "Carregador Veicular com Bluetooth e Transmissor FM Kapbom",
         category: "veicular",
         badge: "Essencial Carro",
         badgeColor: "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30",
         pricePix: 64.90,
         priceOriginal: 99.90,
-        mainImage: "https://www.mirao.com.br/media/catalog/product/c/a/carregador-veicular-com-bluetooth-radio-fm-chamadas-kapbom-ka-c108_1.webp",
+        mainImage: "./img/carregador-veicular-com-bluetooth-radio-fm-chamadas-kapbom-ka-c108_1.webp",
         gallery: [
-          "https://www.mirao.com.br/media/catalog/product/c/a/carregador-veicular-com-bluetooth-radio-fm-chamadas-kapbom-ka-c108_1.webp"
+          "./img/carregador-veicular-com-bluetooth-radio-fm-chamadas-kapbom-ka-c108_1.webp"
         ],
-        shortDesc: "Toque as músicas do Spotify ou YouTube no som original do carro sem fio. Atenda ligações viva-voz e carregue dois aparelhos juntos.",
+        shortDesc: "Toque suas músicas do Spotify no rádio original do carro sem fio. Chamadas viva-voz seguras e 2 portas de recarga rápida.",
         specs: [
-          "Transmissor de frequência FM ajustável com visor LED",
-          "Conexão Bluetooth 5.0 estável sem ruídos",
-          "Microfone integrado com redução de eco para chamadas",
-          "Duas portas USB para carregamento veicular rápido",
-          "Haste articulada para melhor ajuste no painel",
-          "Compatível com 12V e 24V (Carros e Caminhões)"
+          "Transmissor de rádio FM ajustável com mostrador LED",
+          "Conexão Bluetooth 5.0 limpa sem interferências",
+          "Microfone integrado viva-voz para chamadas",
+          "2 portas USB para carregamento rápido simultâneo",
+          "Haste articulada dobrável para melhor encaixe",
+          "Bivolt 12V / 24V (Carros e Caminhões)"
         ]
       },
       {
@@ -446,70 +388,137 @@
         code: "A-988",
         name: "Fone de Ouvido Bluetooth TWS Airdots Pro 3 Altomex",
         category: "audio",
-        badge: "Display LED",
+        badge: "Display Digital",
         badgeColor: "bg-indigo-500/20 text-indigo-400 border border-indigo-500/30",
         pricePix: 69.90,
         priceOriginal: 109.90,
-        mainImage: "https://www.mirao.com.br/media/catalog/product/f/o/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988-2.webp",
+        mainImage: "./img/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988-2.webp",
         gallery: [
-          "https://www.mirao.com.br/media/catalog/product/f/o/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988-2.webp",
-          "https://www.mirao.com.br/media/catalog/product/f/o/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988_1_1.webp",
-          "https://www.mirao.com.br/media/catalog/product/f/o/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988-3.webp",
-          "https://www.mirao.com.br/media/catalog/product/f/o/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988-4.webp"
+          "./img/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988-2.webp",
+          "./img/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988_1_1.webp",
+          "./img/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988-3.webp",
+          "./img/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988-4.webp"
         ],
-        shortDesc: "Estojo com mostrador digital numérico de bateria, isolamento intra-auricular confortável, graves marcantes e pareamento automático.",
+        shortDesc: "Case com display LED de carga numérica individual. Graves presentes, isolamento sonoro confortável e pareamento automático ao abrir.",
         specs: [
-          "Display numérico em LED indicador de carga individual",
-          "Conexão Bluetooth 5.0 com alcance de até 10 metros",
-          "Proteção IPX4 resistente a suor e respingos de chuva",
-          "Autonomia de 3 a 4 horas contínuas por carga",
-          "Microfone embutido para chamadas e áudios",
-          "Estojo recarregável compacto para levar no bolso"
+          "Mostrador LED numérico com % de bateria do estojo",
+          "Bluetooth 5.0 com conexão imediata",
+          "Classificação IPX4 resistente a suor para treinos",
+          "Autonomia de 3 a 4 horas por carga",
+          "Microfone integrado para ligações e mensagens de voz",
+          "Estojo ultra compacto para transporte"
         ]
       }
     ];
 
-    // ESTADO DA APLICAÇÃO
+    let currentSlideIndex = 0;
+    let slideTimer = null;
     let cart = [];
-    let currentCategory = 'todos';
     let defaultWhatsApp = localStorage.getItem('store_whatsapp') || '5511999999999';
 
-    // INICIALIZAÇÃO
     document.addEventListener('DOMContentLoaded', () => {
       renderProducts();
+      renderHeroSlide(currentSlideIndex);
+      setupSliderAutoplay();
       updateHeaderWhatsApp();
     });
 
-    function updateHeaderWhatsApp() {
-      const label = document.getElementById('headerWhatsappLabel');
-      if (localStorage.getItem('store_whatsapp')) {
-        label.innerText = 'Whats: ' + localStorage.getItem('store_whatsapp').replace('55', '');
-      }
+    // CARROSSEL HERO DINÂMICO EM MOVIMENTO
+    function renderHeroSlide(index) {
+      const p = PRODUCTS[index];
+      const container = document.getElementById('heroDynamicSlide');
+      if (!p || !container) return;
+
+      container.innerHTML = `
+        <div class="lg:col-span-7 space-y-5 text-center lg:text-left transition-all duration-500">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-accent text-xs font-black tracking-wider uppercase">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            ${p.badge}
+          </div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+            ${p.name}
+          </h1>
+          <p class="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            ${p.shortDesc}
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-1">
+            <div>
+              <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Preço à vista no Pix</div>
+              <div class="text-3xl font-black text-emerald-400">R$ ${p.pricePix.toFixed(2).replace('.', ',')}</div>
+            </div>
+            <div class="h-10 w-px bg-gray-800 hidden sm:block"></div>
+            <button 
+              onclick="buyDirectWhatsApp(${p.id})"
+              class="px-6 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-500/20 flex items-center gap-2 transition-all transform active:scale-95">
+              <i class="fa-brands fa-whatsapp text-base"></i>
+              Pedir pelo WhatsApp
+            </button>
+            <button 
+              onclick="openProductModal(${p.id})"
+              class="px-5 py-3.5 bg-gray-900/90 hover:bg-gray-800 text-gray-300 font-bold text-xs rounded-xl border border-gray-700/80 flex items-center gap-2 transition-all">
+              <i class="fa-solid fa-expand text-xs"></i>
+              Fotos & Ficha Completa
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative group cursor-pointer" onclick="openProductModal(${p.id})">
+            <div class="absolute -inset-1 bg-gradient-to-r from-brand-600 to-brand-accent rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition duration-500"></div>
+            <div class="relative bg-gray-950 border border-gray-800 rounded-3xl p-6 shadow-2xl max-w-sm animate-float">
+              <img 
+                src="${p.mainImage}" 
+                alt="${p.name}" 
+                class="w-full h-72 object-contain group-hover:scale-105 transition-transform duration-300">
+              <div class="mt-4 flex items-center justify-between text-xs text-gray-400 border-t border-gray-800/80 pt-3">
+                <span class="flex items-center gap-1.5 text-amber-400 font-bold">
+                  <i class="fa-solid fa-star"></i> 4.9 Avaliações
+                </span>
+                <span class="text-emerald-400 font-bold">Em Estoque</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Atualiza os dots indicadores
+      const dotsContainer = document.getElementById('sliderDots');
+      dotsContainer.innerHTML = PRODUCTS.map((item, idx) => `
+        <button 
+          onclick="goToSlide(${idx})" 
+          class="h-2 rounded-full transition-all duration-300 ${idx === index ? 'w-8 bg-brand-accent shadow-md shadow-brand-accent/50' : 'w-2 bg-gray-800 hover:bg-gray-700'}"
+          title="${item.name}">
+        </button>
+      `).join('');
     }
 
-    // RENDERIZAR OS CARDS DA VITRINE
+    function setupSliderAutoplay() {
+      if (slideTimer) clearInterval(slideTimer);
+      slideTimer = setInterval(() => {
+        currentSlideIndex = (currentSlideIndex + 1) % PRODUCTS.length;
+        renderHeroSlide(currentSlideIndex);
+      }, 5000); // Passa a cada 5 segundos automaticamente
+    }
+
+    function goToSlide(idx) {
+      currentSlideIndex = idx;
+      renderHeroSlide(currentSlideIndex);
+      setupSliderAutoplay(); // Reinicia o timer
+    }
+
+    // RENDERIZAR CARDS DA VITRINE
     function renderProducts(items = PRODUCTS) {
       const grid = document.getElementById('productGrid');
       grid.innerHTML = '';
 
-      if (items.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full py-12 text-center text-gray-500">
-            <i class="fa-solid fa-box-open text-4xl mb-3 block"></i>
-            Nenhum produto encontrado nessa categoria.
-          </div>
-        `;
-        return;
-      }
-
       items.forEach(product => {
         const card = document.createElement('div');
-        card.className = "bg-gray-900 border border-gray-800 hover:border-gray-700/80 rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:shadow-black/50";
+        card.className = "bg-gray-900/90 border border-gray-800 hover:border-gray-700 rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:shadow-black/60 hover:-translate-y-1";
         
         card.innerHTML = `
-          <!-- FOTO DO PRODUTO -->
-          <div class="relative bg-black/40 p-4 aspect-square flex items-center justify-center overflow-hidden cursor-pointer" onclick="openProductModal(${product.id})">
-            <span class="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full ${product.badgeColor} z-10">
+          <div class="relative bg-black/40 p-5 aspect-square flex items-center justify-center overflow-hidden cursor-pointer" onclick="openProductModal(${product.id})">
+            <span class="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full ${product.badgeColor} z-10 backdrop-blur-md">
               ${product.badge}
             </span>
             <img 
@@ -518,16 +527,15 @@
               class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
           </div>
 
-          <!-- DETALHES -->
           <div class="p-5 flex-1 flex flex-col justify-between">
             <div>
               <div class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">CÓD: ${product.code}</div>
               <h3 
                 onclick="openProductModal(${product.id})"
-                class="text-sm font-bold text-white hover:text-brand-accent cursor-pointer transition-colors line-clamp-2 leading-snug mb-2">
+                class="text-xs font-bold text-white hover:text-brand-accent cursor-pointer transition-colors line-clamp-2 leading-snug mb-2">
                 ${product.name}
               </h3>
-              <p class="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-4">
+              <p class="text-[11px] text-gray-400 line-clamp-2 leading-relaxed mb-4">
                 ${product.shortDesc}
               </p>
             </div>
@@ -536,17 +544,15 @@
               <div>
                 <span class="text-[10px] text-gray-500 line-through">De R$ ${product.priceOriginal.toFixed(2).replace('.', ',')}</span>
                 <div class="flex items-baseline gap-1.5">
-                  <span class="text-xl font-extrabold text-emerald-400">R$ ${product.pricePix.toFixed(2).replace('.', ',')}</span>
+                  <span class="text-xl font-black text-emerald-400">R$ ${product.pricePix.toFixed(2).replace('.', ',')}</span>
                   <span class="text-[10px] font-bold text-emerald-400/80">no Pix</span>
                 </div>
-                <div class="text-[10px] text-gray-400">ou 3x de R$ ${(product.pricePix / 3 * 1.1).toFixed(2).replace('.', ',')} no cartão</div>
               </div>
 
-              <!-- BOTÕES DE AÇÃO -->
-              <div class="grid grid-cols-2 gap-2 pt-1">
+              <div class="grid grid-cols-2 gap-2">
                 <button 
                   onclick="openProductModal(${product.id})"
-                  class="py-2.5 px-3 bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold rounded-xl border border-gray-700 transition-colors flex items-center justify-center gap-1.5">
+                  class="py-2.5 px-3 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold rounded-xl border border-gray-700 transition-colors flex items-center justify-center gap-1.5">
                   <i class="fa-solid fa-eye text-xs"></i>
                   Detalhes
                 </button>
@@ -558,44 +564,13 @@
                 </button>
               </div>
             </div>
-
           </div>
         `;
         grid.appendChild(card);
       });
     }
 
-    // FILTRO DE CATEGORIAS
-    function filterCategory(cat) {
-      currentCategory = cat;
-      document.querySelectorAll('.category-btn').forEach(btn => {
-        if (btn.getAttribute('data-category') === cat) {
-          btn.className = "category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20 whitespace-nowrap";
-        } else {
-          btn.className = "category-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 whitespace-nowrap";
-        }
-      });
-
-      if (cat === 'todos') {
-        renderProducts(PRODUCTS);
-      } else {
-        const filtered = PRODUCTS.filter(p => p.category === cat);
-        renderProducts(filtered);
-      }
-    }
-
-    // BUSCA RÁPIDA
-    function handleSearch(term) {
-      const q = term.toLowerCase().trim();
-      const filtered = PRODUCTS.filter(p => 
-        p.name.toLowerCase().includes(q) || 
-        p.shortDesc.toLowerCase().includes(q) ||
-        p.code.toLowerCase().includes(q)
-      );
-      renderProducts(filtered);
-    }
-
-    // MODAL COM GALERIA DE FOTOS REAIS
+    // MODAL COM GALERIA
     function openProductModal(id) {
       const p = PRODUCTS.find(item => item.id === id);
       if (!p) return;
@@ -603,9 +578,8 @@
       const modalContent = document.getElementById('modalProductContent');
       
       modalContent.innerHTML = `
-        <!-- GALERIA DE FOTOS (ESQUERDA) -->
         <div class="md:col-span-6 space-y-3">
-          <div class="bg-black/50 rounded-2xl p-4 border border-gray-800 aspect-square flex items-center justify-center overflow-hidden">
+          <div class="bg-black/60 rounded-2xl p-4 border border-gray-800 aspect-square flex items-center justify-center overflow-hidden">
             <img 
               id="modalMainDisplayImage"
               src="${p.gallery[0]}" 
@@ -613,9 +587,8 @@
               class="w-full h-full object-contain">
           </div>
 
-          <!-- MINIATURAS CLICÁVEIS -->
           <div class="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar">
-            ${p.gallery.map((imgUrl, index) => `
+            ${p.gallery.map((imgUrl) => `
               <button 
                 onclick="switchModalImage('${imgUrl}')"
                 class="w-16 h-16 rounded-xl border border-gray-800 hover:border-brand-accent overflow-hidden flex-shrink-0 bg-black/40 p-1 transition-all">
@@ -625,7 +598,6 @@
           </div>
         </div>
 
-        <!-- INFORMAÇÕES TÉCNICAS (DIREITA) -->
         <div class="md:col-span-6 flex flex-col justify-between space-y-4">
           <div>
             <div class="flex items-center justify-between">
@@ -633,17 +605,15 @@
               <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full ${p.badgeColor}">${p.badge}</span>
             </div>
 
-            <h3 class="text-xl font-extrabold text-white mt-2 leading-tight">${p.name}</h3>
+            <h3 class="text-lg font-black text-white mt-2 leading-tight">${p.name}</h3>
             
-            <div class="mt-3 p-3 rounded-xl bg-gray-950 border border-gray-800/80">
-              <div class="text-xs text-gray-400">Preço Especial no Pix</div>
+            <div class="mt-3 p-3 rounded-2xl bg-gray-950 border border-gray-800/80">
+              <div class="text-[10px] text-gray-400 font-bold uppercase">Preço Especial no Pix</div>
               <div class="text-2xl font-black text-emerald-400">R$ ${p.pricePix.toFixed(2).replace('.', ',')}</div>
-              <div class="text-[11px] text-gray-400">Entrega rápida ou retirada combinada</div>
             </div>
 
-            <!-- FICHA TÉCNICA -->
             <div class="mt-4">
-              <h4 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Especificações Oficiais:</h4>
+              <h4 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Especificações Técnicas:</h4>
               <ul class="space-y-1.5 text-xs text-gray-300">
                 ${p.specs.map(spec => `
                   <li class="flex items-start gap-2">
@@ -658,9 +628,9 @@
           <div class="space-y-2 pt-2 border-t border-gray-800">
             <button 
               onclick="buyDirectWhatsApp(${p.id})"
-              class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 transition-all">
-              <i class="fa-brands fa-whatsapp text-lg"></i>
-              Pedir Agora pelo WhatsApp
+              class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 transition-all">
+              <i class="fa-brands fa-whatsapp text-base"></i>
+              Pedir pelo WhatsApp
             </button>
             <button 
               onclick="addToCart(${p.id})"
@@ -684,16 +654,41 @@
       document.getElementById('productModal').classList.add('hidden');
     }
 
-    // CHECKOUT DIRETO NO WHATSAPP
+    // CHECKOUT DIRETO WHATSAPP
     function buyDirectWhatsApp(id) {
       const p = PRODUCTS.find(item => item.id === id);
       if (!p) return;
 
       const num = localStorage.getItem('store_whatsapp') || defaultWhatsApp;
-      const text = `Olá! Tenho interesse no seguinte produto:\n\n*${p.name}*\nCódigo: ${p.code}\nValor à vista no Pix: R$ ${p.pricePix.toFixed(2).replace('.', ',')}\n\nGostaria de combinar a entrega/retirada!`;
+      const text = `Olá! Vi o produto no site e tenho interesse:\n\n*${p.name}*\nCódigo: ${p.code}\nPreço no Pix: R$ ${p.pricePix.toFixed(2).replace('.', ',')}\n\nPodemos combinar a entrega ou retirada?`;
       
-      const url = `https://wa.me/${num}?text=${encodeURIComponent(text)}`;
-      window.open(url, '_blank');
+      window.open(`https://wa.me/${num}?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    // FILTRO E BUSCA
+    function filterCategory(cat) {
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        if (btn.getAttribute('data-category') === cat) {
+          btn.className = "category-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-lg shadow-brand-500/20 whitespace-nowrap";
+        } else {
+          btn.className = "category-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-gray-900 text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800 whitespace-nowrap";
+        }
+      });
+
+      if (cat === 'todos') {
+        renderProducts(PRODUCTS);
+      } else {
+        renderProducts(PRODUCTS.filter(p => p.category === cat));
+      }
+    }
+
+    function handleSearch(term) {
+      const q = term.toLowerCase().trim();
+      renderProducts(PRODUCTS.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.shortDesc.toLowerCase().includes(q) ||
+        p.code.toLowerCase().includes(q)
+      ));
     }
 
     // LÓGICA DO CARRINHO
@@ -701,32 +696,13 @@
       const p = PRODUCTS.find(item => item.id === id);
       if (!p) return;
 
-      const existing = cart.find(item => item.id === id);
-      if (existing) {
-        existing.qty++;
-      } else {
-        cart.push({ ...p, qty: 1 });
-      }
+      const item = cart.find(i => i.id === id);
+      if (item) item.qty++;
+      else cart.push({ ...p, qty: 1 });
 
       updateCartUI();
       closeProductModal();
       toggleCartDrawer();
-    }
-
-    function removeFromCart(id) {
-      cart = cart.filter(item => item.id !== id);
-      updateCartUI();
-    }
-
-    function changeQty(id, delta) {
-      const item = cart.find(i => i.id === id);
-      if (!item) return;
-      item.qty += delta;
-      if (item.qty <= 0) {
-        removeFromCart(id);
-      } else {
-        updateCartUI();
-      }
     }
 
     function updateCartUI() {
@@ -747,81 +723,81 @@
       totalEl.innerText = `R$ ${totalVal.toFixed(2).replace('.', ',')}`;
 
       if (cart.length === 0) {
-        list.innerHTML = `
-          <div class="text-center py-12 text-gray-500">
-            <i class="fa-solid fa-cart-arrow-down text-3xl mb-2 block"></i>
-            Seu carrinho está vazio.
-          </div>
-        `;
+        list.innerHTML = `<div class="text-center py-12 text-gray-500 text-xs">Seu carrinho está vazio.</div>`;
         return;
       }
 
       list.innerHTML = cart.map(item => `
         <div class="flex items-center gap-3 bg-gray-950 p-3 rounded-xl border border-gray-800">
-          <img src="${item.mainImage}" class="w-14 h-14 object-contain bg-black/40 rounded-lg p-1">
+          <img src="${item.mainImage}" class="w-12 h-12 object-contain bg-black/40 rounded-lg p-1">
           <div class="flex-1 min-w-0">
             <h4 class="text-xs font-bold text-white truncate">${item.name}</h4>
-            <div class="text-xs font-extrabold text-emerald-400 mt-0.5">
-              R$ ${item.pricePix.toFixed(2).replace('.', ',')}
-            </div>
-            <div class="flex items-center gap-2 mt-2">
-              <button onclick="changeQty(${item.id}, -1)" class="w-5 h-5 bg-gray-800 text-gray-300 rounded flex items-center justify-center hover:bg-gray-700 text-xs">-</button>
+            <div class="text-xs font-extrabold text-emerald-400">R$ ${item.pricePix.toFixed(2).replace('.', ',')}</div>
+            <div class="flex items-center gap-2 mt-1">
+              <button onclick="changeQty(${item.id}, -1)" class="w-5 h-5 bg-gray-800 text-gray-300 rounded text-xs">-</button>
               <span class="text-xs font-bold text-white">${item.qty}</span>
-              <button onclick="changeQty(${item.id}, 1)" class="w-5 h-5 bg-gray-800 text-gray-300 rounded flex items-center justify-center hover:bg-gray-700 text-xs">+</button>
+              <button onclick="changeQty(${item.id}, 1)" class="w-5 h-5 bg-gray-800 text-gray-300 rounded text-xs">+</button>
             </div>
           </div>
-          <button onclick="removeFromCart(${item.id})" class="text-gray-500 hover:text-rose-400 text-sm p-1">
+          <button onclick="removeFromCart(${item.id})" class="text-gray-500 hover:text-rose-400 p-1 text-xs">
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
       `).join('');
     }
 
+    function changeQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+      updateCartUI();
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(i => i.id !== id);
+      updateCartUI();
+    }
+
     function toggleCartDrawer() {
-      const drawer = document.getElementById('cartDrawer');
-      drawer.classList.toggle('hidden');
+      document.getElementById('cartDrawer').classList.toggle('hidden');
     }
 
     function checkoutOrderWhatsApp() {
       if (cart.length === 0) return;
-
       const num = localStorage.getItem('store_whatsapp') || defaultWhatsApp;
       let text = "Olá! Gostaria de fechar o seguinte pedido:\n\n";
-
       let total = 0;
-      cart.forEach((item, index) => {
+      cart.forEach((item, idx) => {
         const sub = item.pricePix * item.qty;
         total += sub;
-        text += `${index + 1}) *${item.name}*\n   Qtd: ${item.qty}x | Subtotal: R$ ${sub.toFixed(2).replace('.', ',')}\n`;
+        text += `${idx + 1}) *${item.name}*\n   Qtd: ${item.qty}x | Subtotal: R$ ${sub.toFixed(2).replace('.', ',')}\n`;
       });
-
-      text += `\n*VALOR TOTAL NO PIX: R$ ${total.toFixed(2).replace('.', ',')}*\n\nComo combinamos a entrega?`;
-
-      const url = `https://wa.me/${num}?text=${encodeURIComponent(text)}`;
-      window.open(url, '_blank');
+      text += `\n*TOTAL NO PIX: R$ ${total.toFixed(2).replace('.', ',')}*\n\nComo combinamos a entrega?`;
+      window.open(`https://wa.me/${num}?text=${encodeURIComponent(text)}`, '_blank');
     }
 
-    // MODAL DE CONFIGURAÇÃO DE WHATSAPP
+    // MODAL WHATSAPP
     function openConfigModal() {
-      const input = document.getElementById('whatsappInput');
-      input.value = localStorage.getItem('store_whatsapp') || '';
+      document.getElementById('whatsappInput').value = localStorage.getItem('store_whatsapp') || '';
       document.getElementById('configModal').classList.remove('hidden');
     }
-
     function closeConfigModal() {
       document.getElementById('configModal').classList.add('hidden');
     }
-
     function saveWhatsAppNumber() {
       const val = document.getElementById('whatsappInput').value.replace(/\D/g, '');
       if (val.length >= 10) {
         localStorage.setItem('store_whatsapp', val.startsWith('55') ? val : '55' + val);
         updateHeaderWhatsApp();
         closeConfigModal();
-        alert('Número do WhatsApp atualizado com sucesso!');
       } else {
-        alert('Por favor, digite um número válido com DDD.');
+        alert('Digite o número com DDD.');
       }
+    }
+    function updateHeaderWhatsApp() {
+      const n = localStorage.getItem('store_whatsapp');
+      if (n) document.getElementById('headerWhatsappLabel').innerText = n.replace('55', '');
     }
   </script>
 </body>
