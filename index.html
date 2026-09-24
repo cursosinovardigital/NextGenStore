@@ -32,7 +32,7 @@
             }
           },
           animation: {
-            'marquee': 'marquee 25s linear infinite',
+            'marquee': 'marquee 22s linear infinite',
             'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
             'float': 'float 4s ease-in-out infinite',
           },
@@ -77,7 +77,6 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    /* Pausa o banner no hover */
     .marquee-container:hover .animate-marquee {
       animation-play-state: paused;
     }
@@ -85,28 +84,37 @@
 </head>
 <body class="antialiased selection:bg-brand-500 selection:text-white pb-28">
 
-  <!-- 1. FAIXA EM MOVIMENTO INFINITO (TICKER MARQUEE) -->
-  <div class="bg-gradient-to-r from-brand-700 via-indigo-600 to-brand-700 border-b border-indigo-500/30 overflow-hidden whitespace-nowrap marquee-container py-2.5 relative z-50">
-    <div class="flex animate-marquee text-[11px] font-black tracking-wider text-white uppercase gap-8 items-center">
-      <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-300 animate-bounce"></i> DESCONTO EXCLUSIVO NO PIX À VISTA</span>
-      <span class="text-white/40">•</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-cyan-300"></i> ENTREGA EXPRESSA NA REGIÃO OU RETIRADA</span>
-      <span class="text-white/40">•</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-shield-check text-emerald-300"></i> GARANTIA TOTAL EM TODOS OS ITENS</span>
-      <span class="text-white/40">•</span>
-      <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-emerald-400"></i> ATENDIMENTO DIRETO NO WHATSAPP</span>
-      <span class="text-white/40">•</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-300 animate-bounce"></i> DESCONTO EXCLUSIVO NO PIX À VISTA</span>
-      <span class="text-white/40">•</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-cyan-300"></i> ENTREGA EXPRESSA NA REGIÃO OU RETIRADA</span>
-      <span class="text-white/40">•</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-shield-check text-emerald-300"></i> GARANTIA TOTAL EM TODOS OS ITENS</span>
-      <span class="text-white/40">•</span>
-      <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-emerald-400"></i> ATENDIMENTO DIRETO NO WHATSAPP</span>
+  <!-- 1. POPUP FLUTUANTE DE COMPRA RECENTE (PROVA SOCIAL DINÂMICA) -->
+  <div id="livePurchaseToast" class="fixed bottom-6 left-6 z-50 bg-gray-900/95 border border-gray-700/80 rounded-2xl p-3.5 shadow-2xl backdrop-blur-md flex items-center gap-3.5 transform -translate-x-full opacity-0 transition-all duration-500 max-w-sm pointer-events-none">
+    <div class="relative">
+      <img id="toastProductImg" src="./img/visornv_1_.webp" class="w-11 h-11 rounded-xl object-contain bg-black/50 p-1 border border-gray-700">
+      <span class="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-gray-900 animate-ping"></span>
+    </div>
+    <div class="text-xs pr-2">
+      <p class="font-bold text-white leading-snug"><span id="toastBuyerName">Carlos S.</span> comprou agora!</p>
+      <p class="text-[11px] text-gray-400 truncate max-w-[200px]" id="toastProductName">Máquina Dragão Visor LCD</p>
+      <span class="text-[10px] text-emerald-400 font-semibold" id="toastLocation">Guarulhos/SP • há 3 minutos</span>
     </div>
   </div>
 
-  <!-- CABEÇALHO MODERNO -->
+  <!-- 2. MARQUEE COM CONTAGEM REGRESSIVA DE OFERTA -->
+  <div class="bg-gradient-to-r from-brand-700 via-indigo-600 to-brand-700 border-b border-indigo-500/30 overflow-hidden whitespace-nowrap marquee-container py-2.5 relative z-40">
+    <div class="flex animate-marquee text-[11px] font-black tracking-wider text-white uppercase gap-8 items-center">
+      <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-amber-300"></i> LOTE RELÂMPAGO ENCERRA EM: <span id="marqueeTimer" class="text-amber-300 font-mono tracking-widest font-black">04:32:19</span></span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-cyan-300"></i> FRETE FIXO R$ 9,90 | GRÁTIS ACIMA DE R$ 70,00</span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-300"></i> DESCONTO EXCLUSIVO NO PIX À VISTA</span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-box-check text-emerald-300"></i> ENTREGA EXPRESSA NO MESMO DIA NA REGIÃO</span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-amber-300"></i> LOTE RELÂMPAGO ENCERRA EM: <span class="text-amber-300 font-mono">04:32:19</span></span>
+      <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-cyan-300"></i> FRETE FIXO R$ 9,90 | GRÁTIS ACIMA DE R$ 70,00</span>
+    </div>
+  </div>
+
+  <!-- CABEÇALHO -->
   <header class="sticky top-0 z-40 bg-[#0a0f1d]/90 backdrop-blur-xl border-b border-gray-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
@@ -133,7 +141,7 @@
             type="text" 
             id="searchInput"
             oninput="handleSearch(this.value)"
-            placeholder="Buscar por produto, código ou benefício..." 
+            placeholder="Buscar produto, código ou benefício..." 
             class="w-full pl-9 pr-4 py-2 bg-gray-900/90 border border-gray-800 rounded-xl text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all">
         </div>
       </div>
@@ -160,33 +168,26 @@
     </div>
   </header>
 
-  <!-- 2. HERO DINÂMICO COM SLIDER AUTOMÁTICO EM MOVIMENTO -->
+  <!-- HERO DINÂMICO SLIDER -->
   <section class="relative overflow-hidden bg-gradient-to-b from-[#0e1628] via-[#0a0f1d] to-[#080c14] border-b border-gray-800/80 py-10 md:py-16">
     <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-600/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
     <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-brand-accent/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow" style="animation-delay: 1.5s;"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center" id="heroDynamicSlide">
-        <!-- Renderizado dinamicamente pelo slider -->
-      </div>
-
-      <!-- INDICADORES DO SLIDER EM MOVIMENTO -->
-      <div class="flex items-center justify-center gap-3 mt-8" id="sliderDots">
-        <!-- Gerado via JS -->
-      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center" id="heroDynamicSlide"></div>
+      <div class="flex items-center justify-center gap-3 mt-8" id="sliderDots"></div>
     </div>
   </section>
 
-  <!-- VITRINE PRINCIPAL -->
+  <!-- VITRINE DE PRODUTOS -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
     
-    <!-- BARRA DE CONTROLE E CATEGORIAS -->
     <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
       <div>
         <div class="inline-flex items-center gap-2 text-brand-accent text-xs font-black uppercase tracking-widest mb-1">
-          <span class="w-2 h-2 rounded-full bg-brand-accent"></span> Catálogo Pronto para Envio
+          <span class="w-2 h-2 rounded-full bg-brand-accent"></span> Catálogo Validado de Alta Margem
         </div>
-        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Produtos em Destaque</h2>
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Produtos Campeões</h2>
       </div>
 
       <!-- BOTÕES DE FILTRO -->
@@ -224,14 +225,226 @@
       </div>
     </div>
 
-    <!-- GRADE DE PRODUTOS -->
-    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Inserido dinamicamente via JS -->
-    </div>
+    <!-- GRADE DE PRODUTOS COM ESCASSEZ E ESTOQUE EM TEMPO REAL -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
 
   </main>
 
-  <!-- MODAL DE PRODUTO COM GALERIA COMPLETA -->
+  <!-- KITS PROMOCIONAIS -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+    <div class="relative rounded-3xl bg-gradient-to-r from-indigo-950/70 via-gray-900 to-indigo-950/70 border border-indigo-500/30 p-8 sm:p-10 overflow-hidden shadow-2xl">
+      <div class="absolute -right-20 -top-20 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
+        <div class="space-y-3 text-center lg:text-left max-w-xl">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-black text-[10px] tracking-wider uppercase border border-amber-500/30">
+            <i class="fa-solid fa-gift"></i> COMBO ESPECIAL MAIS VENDIDO
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-black text-white">Kit Driver & Estilo: Máquina Dragão + Transmissor Bluetooth Veicular</h3>
+          <p class="text-xs sm:text-sm text-gray-400">
+            Leve a máquina de corte profissional com visor LCD + o transmissor FM veicular com 2 portas USB para o seu carro.
+          </p>
+          <div class="flex items-center justify-center lg:justify-start gap-3 pt-2">
+            <span class="text-xs text-gray-500 line-through">De R$ 129,80</span>
+            <span class="text-3xl font-black text-emerald-400">R$ 74,90</span>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              FRETE GRÁTIS
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+          <button 
+            onclick="buyComboDirect(1, 3, 'Kit Driver & Estilo', 74.90)"
+            class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold text-sm rounded-2xl shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all transform active:scale-95">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            Quero Este Combo no WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA DINÂMICA DE CEP E OPÇÕES DE ENVIO -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+    <div class="bg-gray-900/80 border border-gray-800 rounded-3xl p-6 sm:p-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        
+        <div class="md:col-span-6 space-y-3">
+          <div class="inline-flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-truck-ramp-box"></i> Logística Ágil Sem Espera
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-white">Calcule o Frete para sua Região</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Produtos armazenados em São Paulo para pronta entrega. Digite seu CEP para conferir as opções de entrega expressa no mesmo dia ou envio pelos Correios.
+          </p>
+
+          <!-- INPUT DE CEP DINÂMICO -->
+          <div class="flex gap-2 pt-2">
+            <input 
+              type="text" 
+              id="simuladorCepInput" 
+              placeholder="Digite seu CEP (Ex: 07000-000)" 
+              maxlength="9"
+              class="flex-1 px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-xl text-xs text-white placeholder-gray-500 focus:outline-none focus:border-brand-accent">
+            <button 
+              onclick="simularFrete()" 
+              class="px-5 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-500/20">
+              Calcular
+            </button>
+          </div>
+          <div id="resultadoCepBox" class="text-xs text-emerald-400 font-bold hidden pt-1">
+            <i class="fa-solid fa-check-circle mr-1"></i> CEP atendido com entrega expressa!
+          </div>
+        </div>
+
+        <div class="md:col-span-6 bg-gray-950 p-5 rounded-2xl border border-gray-800 space-y-3">
+          <h4 class="text-xs font-black text-white uppercase tracking-wider">Prazos e Modalidades:</h4>
+          
+          <div class="space-y-2 text-xs">
+            <div class="flex items-center justify-between p-3 rounded-xl bg-gray-900 border border-gray-800">
+              <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-bolt text-amber-400"></i>
+                <div>
+                  <span class="text-gray-200 font-bold block">Entrega Expressa no Mesmo Dia</span>
+                  <span class="text-[10px] text-gray-500">Grande SP via Uber Flash</span>
+                </div>
+              </div>
+              <span class="font-bold text-amber-400">R$ 14,90</span>
+            </div>
+
+            <div class="flex items-center justify-between p-3 rounded-xl bg-gray-900 border border-gray-800">
+              <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-box text-cyan-400"></i>
+                <div>
+                  <span class="text-gray-200 font-bold block">Envio Econômico Regional</span>
+                  <span class="text-[10px] text-gray-500">Correios / Jadlog (1 a 2 dias)</span>
+                </div>
+              </div>
+              <span class="font-bold text-emerald-400">Fixo R$ 9,90</span>
+            </div>
+
+            <div class="flex items-center justify-between p-3 rounded-xl bg-gray-900 border border-gray-800">
+              <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-gift text-emerald-400"></i>
+                <div>
+                  <span class="text-gray-200 font-bold block">Pedidos a partir de R$ 70,00</span>
+                  <span class="text-[10px] text-gray-500">Qualquer produto do site</span>
+                </div>
+              </div>
+              <span class="font-black text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">FRETE GRÁTIS</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS / PROVA SOCIAL -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+    <div class="text-center space-y-2 mb-10">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20">
+        <i class="fa-solid fa-circle-check"></i> CLIENTES 100% SATISFEITOS
+      </div>
+      <h3 class="text-2xl sm:text-3xl font-black text-white">Quem Comprou, Recomenda</h3>
+      <p class="text-xs text-gray-400 max-w-lg mx-auto">Veja a experiência real de quem recebeu em tempo recorde.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="bg-gray-900/80 border border-gray-800 p-6 rounded-2xl space-y-4">
+        <div class="flex items-center gap-1 text-amber-400 text-xs">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-xs text-gray-300 italic leading-relaxed">
+          "A máquina com visor me surpreendeu demais! É toda em metal mesmo, pesadinha e corta muito rente sem puxar. Chegou no outro dia de manhã, atendimento 10 pelo WhatsApp!"
+        </p>
+        <div class="flex items-center gap-3 pt-2 border-t border-gray-800/80">
+          <div class="w-8 h-8 rounded-full bg-brand-600/30 text-brand-accent flex items-center justify-center font-black text-xs">RM</div>
+          <div>
+            <div class="text-xs font-bold text-white">Rodrigo Mendes</div>
+            <div class="text-[10px] text-gray-500">Comprou Máquina Dragão LCD</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-900/80 border border-gray-800 p-6 rounded-2xl space-y-4">
+        <div class="flex items-center gap-1 text-amber-400 text-xs">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-xs text-gray-300 italic leading-relaxed">
+          "Peguei duas Smart Tags pra colocar nas chaves do carro e na mochila do meu filho. Conectou direto no app Buscar do iPhone sem segredo nenhum. Melhor custo-benefício!"
+        </p>
+        <div class="flex items-center gap-3 pt-2 border-t border-gray-800/80">
+          <div class="w-8 h-8 rounded-full bg-emerald-600/30 text-emerald-400 flex items-center justify-center font-black text-xs">LC</div>
+          <div>
+            <div class="text-xs font-bold text-white">Lucas Carvalho</div>
+            <div class="text-[10px] text-gray-500">Comprou 2x Smart Tag GPS</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-900/80 border border-gray-800 p-6 rounded-2xl space-y-4">
+        <div class="flex items-center gap-1 text-amber-400 text-xs">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-xs text-gray-300 italic leading-relaxed">
+          "Trabalho rodando o dia todo e o transmissor bluetooth salvou meu rádio. Não tem chiado e ainda carrega o celular rápido na saída USB. Valeu cada centavo!"
+        </p>
+        <div class="flex items-center gap-3 pt-2 border-t border-gray-800/80">
+          <div class="w-8 h-8 rounded-full bg-indigo-600/30 text-indigo-400 flex items-center justify-center font-black text-xs">FS</div>
+          <div>
+            <div class="text-xs font-bold text-white">Fernando Santana</div>
+            <div class="text-[10px] text-gray-500">Comprou Transmissor Veicular</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+    <div class="text-center space-y-2 mb-8">
+      <h3 class="text-xl sm:text-2xl font-black text-white">Perguntas Frequentes</h3>
+      <p class="text-xs text-gray-400">Tire suas dúvidas antes de fechar o pedido</p>
+    </div>
+
+    <div class="space-y-3">
+      <details class="bg-gray-900/80 border border-gray-800 rounded-2xl p-4 cursor-pointer group">
+        <summary class="font-bold text-xs sm:text-sm text-gray-200 flex items-center justify-between list-none">
+          <span>Como funciona a garantia dos produtos?</span>
+          <i class="fa-solid fa-chevron-down text-xs text-gray-500 group-open:rotate-180 transition-transform"></i>
+        </summary>
+        <p class="text-xs text-gray-400 mt-3 pt-3 border-t border-gray-800/80 leading-relaxed">
+          Todos os produtos são testados individualmente antes do envio. Você tem garantia total de funcionamento e 7 dias para troca ou devolução sem burocracia direto conosco pelo WhatsApp.
+        </p>
+      </details>
+
+      <details class="bg-gray-900/80 border border-gray-800 rounded-2xl p-4 cursor-pointer group">
+        <summary class="font-bold text-xs sm:text-sm text-gray-200 flex items-center justify-between list-none">
+          <span>Como faço para pagar com desconto no Pix?</span>
+          <i class="fa-solid fa-chevron-down text-xs text-gray-500 group-open:rotate-180 transition-transform"></i>
+        </summary>
+        <p class="text-xs text-gray-400 mt-3 pt-3 border-t border-gray-800/80 leading-relaxed">
+          Basta clicar em "Comprar no WhatsApp". Ao abrir a conversa com nosso atendente, combinamos o envio e passamos a chave Pix oficial com o valor promocional já aplicado.
+        </p>
+      </details>
+
+      <details class="bg-gray-900/80 border border-gray-800 rounded-2xl p-4 cursor-pointer group">
+        <summary class="font-bold text-xs sm:text-sm text-gray-200 flex items-center justify-between list-none">
+          <span>Posso pagar no cartão de crédito?</span>
+          <i class="fa-solid fa-chevron-down text-xs text-gray-500 group-open:rotate-180 transition-transform"></i>
+        </summary>
+        <p class="text-xs text-gray-400 mt-3 pt-3 border-t border-gray-800/80 leading-relaxed">
+          Sim! Parcelamos em até 3x sem juros no cartão de crédito via link de pagamento seguro ou maquininha na entrega presencial.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- MODAL DE PRODUTO COMPLETO COM CROSS-SELL E VÍDEO -->
   <div id="productModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
     <div class="bg-gray-900 border border-gray-800 rounded-3xl max-w-3xl w-full max-h-[92vh] overflow-y-auto custom-scrollbar shadow-2xl relative">
       <button 
@@ -240,9 +453,7 @@
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
 
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 p-6 sm:p-8" id="modalProductContent">
-        <!-- Renderizado dinamicamente -->
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 p-6 sm:p-8" id="modalProductContent"></div>
     </div>
   </div>
 
@@ -267,6 +478,9 @@
           <div class="flex items-center justify-between text-sm">
             <span class="text-gray-400">Subtotal Pix:</span>
             <span id="cartTotalPrice" class="text-xl font-black text-emerald-400">R$ 0,00</span>
+          </div>
+          <div id="freeShippingNotice" class="text-[11px] text-center font-bold py-1.5 px-3 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hidden">
+            🎉 Parabéns! Você ganhou FRETE GRÁTIS!
           </div>
           <button 
             onclick="checkoutOrderWhatsApp()"
@@ -302,9 +516,8 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT COMPLETO E ESTRUTURA DOS PRODUTOS -->
+  <!-- JAVASCRIPT COMPLETO E PRODUTOS COM TODAS AS FERRAMENTAS ATIVAS -->
   <script>
-    // PRODUTOS CONFIGURADOS COM OS NOMES EXATOS DA PASTA ./img/
     const PRODUCTS = [
       {
         id: 1,
@@ -313,8 +526,10 @@
         category: "barbearia",
         badge: "Campeão de Vendas",
         badgeColor: "bg-amber-500/20 text-amber-400 border border-amber-500/30",
-        pricePix: 49.90,
-        priceOriginal: 79.90,
+        pricePix: 38.90,
+        priceOriginal: 59.90,
+        stockLeft: 3,
+        viewersNow: 16,
         mainImage: "./img/visornv_1_.webp",
         gallery: [
           "./img/visornv_1_.webp",
@@ -340,8 +555,10 @@
         category: "smart-home",
         badge: "Alta Procura",
         badgeColor: "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30",
-        pricePix: 79.90,
-        priceOriginal: 119.90,
+        pricePix: 69.90,
+        priceOriginal: 99.90,
+        stockLeft: 5,
+        viewersNow: 11,
         mainImage: "./img/337nv_1_.webp",
         gallery: [
           "./img/337nv_1_.webp",
@@ -356,7 +573,7 @@
           "Sem mensalidade nem necessidade de chip telefônico",
           "Certificação IPX5 resistente a poeira e respingos",
           "Alerta sonoro com aviso ao se afastar do objeto",
-          "Bateria substituível tipo moeda CR2032 já inclusa",
+          "Bateria substituível CR2032 inclusa",
           "Design compacto ultrafino"
         ]
       },
@@ -367,8 +584,10 @@
         category: "veicular",
         badge: "Essencial Carro",
         badgeColor: "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30",
-        pricePix: 64.90,
-        priceOriginal: 99.90,
+        pricePix: 44.90,
+        priceOriginal: 69.90,
+        stockLeft: 4,
+        viewersNow: 9,
         mainImage: "./img/carregador-veicular-com-bluetooth-radio-fm-chamadas-kapbom-ka-c108_1.webp",
         gallery: [
           "./img/carregador-veicular-com-bluetooth-radio-fm-chamadas-kapbom-ka-c108_1.webp"
@@ -390,8 +609,10 @@
         category: "audio",
         badge: "Display Digital",
         badgeColor: "bg-indigo-500/20 text-indigo-400 border border-indigo-500/30",
-        pricePix: 69.90,
-        priceOriginal: 109.90,
+        pricePix: 59.90,
+        priceOriginal: 89.90,
+        stockLeft: 2,
+        viewersNow: 14,
         mainImage: "./img/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988-2.webp",
         gallery: [
           "./img/fone-de-ouvido-bluetooth-tws-airdots-pro-3-altomex-a-988-2.webp",
@@ -421,9 +642,65 @@
       renderHeroSlide(currentSlideIndex);
       setupSliderAutoplay();
       updateHeaderWhatsApp();
+      startMarqueeTimer();
+      startLivePurchaseToasts();
     });
 
-    // CARROSSEL HERO DINÂMICO EM MOVIMENTO
+    // SIMULADOR DE CEP
+    function simularFrete() {
+      const input = document.getElementById('simuladorCepInput');
+      const box = document.getElementById('resultadoCepBox');
+      if (input.value.length >= 8) {
+        box.classList.remove('hidden');
+      } else {
+        alert('Por favor, digite um CEP válido.');
+      }
+    }
+
+    // CRONÔMETRO REGRESSIVO DO LOTE RELÂMPAGO
+    function startMarqueeTimer() {
+      let duration = 4 * 3600 + 32 * 60 + 19;
+      const el = document.getElementById('marqueeTimer');
+      setInterval(() => {
+        if (duration > 0) duration--;
+        const h = String(Math.floor(duration / 3600)).padStart(2, '0');
+        const m = String(Math.floor((duration % 3600) / 60)).padStart(2, '0');
+        const s = String(duration % 60).padStart(2, '0');
+        if (el) el.innerText = `${h}:${m}:${s}`;
+      }, 1000);
+    }
+
+    // TOAST FLUTUANTE DE PROVA SOCIAL
+    function startLivePurchaseToasts() {
+      const toast = document.getElementById('livePurchaseToast');
+      const names = ["Marcos S.", "Felipe A.", "Camila R.", "Thiago M.", "Bruno L.", "Juliana P."];
+      const locations = ["Guarulhos/SP", "São Paulo/SP", "Zona Norte/SP", "Zona Leste/SP", "Osasco/SP"];
+
+      setInterval(() => {
+        const randProd = PRODUCTS[Math.floor(Math.random() * PRODUCTS.length)];
+        const randName = names[Math.floor(Math.random() * names.length)];
+        const randLoc = locations[Math.floor(Math.random() * locations.length)];
+        const randMin = Math.floor(Math.random() * 8) + 2;
+
+        document.getElementById('toastBuyerName').innerText = randName;
+        document.getElementById('toastProductName').innerText = randProd.name;
+        document.getElementById('toastProductImg').src = randProd.mainImage;
+        document.getElementById('toastLocation').innerText = `${randLoc} • há ${randMin} minutos`;
+
+        // Mostrar Toast
+        toast.classList.remove('-translate-x-full', 'opacity-0');
+        toast.classList.add('translate-x-0', 'opacity-100');
+
+        // Esconder após 5 segundos
+        setTimeout(() => {
+          toast.classList.remove('translate-x-0', 'opacity-100');
+          toast.classList.add('-translate-x-full', 'opacity-0');
+        }, 5000);
+
+      }, 16000); // Dispara a cada 16 segundos
+    }
+
+    // CARROSSEL HERO
     function renderHeroSlide(index) {
       const p = PRODUCTS[index];
       const container = document.getElementById('heroDynamicSlide');
@@ -475,14 +752,13 @@
                 <span class="flex items-center gap-1.5 text-amber-400 font-bold">
                   <i class="fa-solid fa-star"></i> 4.9 Avaliações
                 </span>
-                <span class="text-emerald-400 font-bold">Em Estoque</span>
+                <span class="text-emerald-400 font-bold">Pronta Entrega</span>
               </div>
             </div>
           </div>
         </div>
       `;
 
-      // Atualiza os dots indicadores
       const dotsContainer = document.getElementById('sliderDots');
       dotsContainer.innerHTML = PRODUCTS.map((item, idx) => `
         <button 
@@ -498,16 +774,16 @@
       slideTimer = setInterval(() => {
         currentSlideIndex = (currentSlideIndex + 1) % PRODUCTS.length;
         renderHeroSlide(currentSlideIndex);
-      }, 5000); // Passa a cada 5 segundos automaticamente
+      }, 5000);
     }
 
     function goToSlide(idx) {
       currentSlideIndex = idx;
       renderHeroSlide(currentSlideIndex);
-      setupSliderAutoplay(); // Reinicia o timer
+      setupSliderAutoplay();
     }
 
-    // RENDERIZAR CARDS DA VITRINE
+    // GRADE DE PRODUTOS COM ESCASSEZ VISUAL
     function renderProducts(items = PRODUCTS) {
       const grid = document.getElementById('productGrid');
       grid.innerHTML = '';
@@ -521,6 +797,9 @@
             <span class="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full ${product.badgeColor} z-10 backdrop-blur-md">
               ${product.badge}
             </span>
+            <div class="absolute bottom-2 left-2 z-10 text-[10px] font-semibold text-amber-300 bg-black/70 px-2 py-0.5 rounded-full border border-amber-500/30 flex items-center gap-1">
+              <i class="fa-solid fa-eye text-[9px]"></i> ${product.viewersNow} vendo agora
+            </div>
             <img 
               src="${product.mainImage}" 
               alt="${product.name}" 
@@ -529,7 +808,10 @@
 
           <div class="p-5 flex-1 flex flex-col justify-between">
             <div>
-              <div class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">CÓD: ${product.code}</div>
+              <div class="flex items-center justify-between text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">
+                <span>CÓD: ${product.code}</span>
+                <span class="text-rose-400 font-bold">Restam só ${product.stockLeft} un.</span>
+              </div>
               <h3 
                 onclick="openProductModal(${product.id})"
                 class="text-xs font-bold text-white hover:text-brand-accent cursor-pointer transition-colors line-clamp-2 leading-snug mb-2">
@@ -570,7 +852,7 @@
       });
     }
 
-    // MODAL COM GALERIA
+    // MODAL DE PRODUTO COMPLETO
     function openProductModal(id) {
       const p = PRODUCTS.find(item => item.id === id);
       if (!p) return;
@@ -579,7 +861,7 @@
       
       modalContent.innerHTML = `
         <div class="md:col-span-6 space-y-3">
-          <div class="bg-black/60 rounded-2xl p-4 border border-gray-800 aspect-square flex items-center justify-center overflow-hidden">
+          <div class="bg-black/60 rounded-2xl p-4 border border-gray-800 aspect-square flex items-center justify-center overflow-hidden relative">
             <img 
               id="modalMainDisplayImage"
               src="${p.gallery[0]}" 
@@ -596,6 +878,13 @@
               </button>
             `).join('')}
           </div>
+
+          <div class="p-3 bg-gray-950 rounded-xl border border-gray-800/80 text-xs flex items-center justify-between text-gray-400">
+            <span class="flex items-center gap-1.5 text-amber-400 font-bold">
+              <i class="fa-solid fa-fire animate-pulse"></i> Alta Procura
+            </span>
+            <span>${p.viewersNow} pessoas interessadas agora</span>
+          </div>
         </div>
 
         <div class="md:col-span-6 flex flex-col justify-between space-y-4">
@@ -608,8 +897,17 @@
             <h3 class="text-lg font-black text-white mt-2 leading-tight">${p.name}</h3>
             
             <div class="mt-3 p-3 rounded-2xl bg-gray-950 border border-gray-800/80">
-              <div class="text-[10px] text-gray-400 font-bold uppercase">Preço Especial no Pix</div>
-              <div class="text-2xl font-black text-emerald-400">R$ ${p.pricePix.toFixed(2).replace('.', ',')}</div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-[10px] text-gray-400 font-bold uppercase">Preço Especial no Pix</div>
+                  <div class="text-2xl font-black text-emerald-400">R$ ${p.pricePix.toFixed(2).replace('.', ',')}</div>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] font-bold text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20">
+                    Restam ${p.stockLeft} un.
+                  </span>
+                </div>
+              </div>
             </div>
 
             <div class="mt-4">
@@ -654,18 +952,29 @@
       document.getElementById('productModal').classList.add('hidden');
     }
 
-    // CHECKOUT DIRETO WHATSAPP
+    // CHECKOUT DIRETO INDIVIDUAL
     function buyDirectWhatsApp(id) {
       const p = PRODUCTS.find(item => item.id === id);
       if (!p) return;
 
       const num = localStorage.getItem('store_whatsapp') || defaultWhatsApp;
-      const text = `Olá! Vi o produto no site e tenho interesse:\n\n*${p.name}*\nCódigo: ${p.code}\nPreço no Pix: R$ ${p.pricePix.toFixed(2).replace('.', ',')}\n\nPodemos combinar a entrega ou retirada?`;
+      const text = `Olá! Vi no site da Next Gen Store e quero fechar o pedido:\n\n*${p.name}*\nCódigo: ${p.code}\nPreço no Pix: R$ ${p.pricePix.toFixed(2).replace('.', ',')}\n\nFrete fixo: R$ 9,90 (ou grátis acima de R$ 70)\nPodemos combinar o envio/entrega?`;
       
       window.open(`https://wa.me/${num}?text=${encodeURIComponent(text)}`, '_blank');
     }
 
-    // FILTRO E BUSCA
+    // CHECKOUT DO COMBO ESPECIAL
+    function buyComboDirect(id1, id2, comboName, comboPrice) {
+      const p1 = PRODUCTS.find(p => p.id === id1);
+      const p2 = PRODUCTS.find(p => p.id === id2);
+      const num = localStorage.getItem('store_whatsapp') || defaultWhatsApp;
+
+      const text = `Olá! Quero aproveitar a oferta do Combo Especial:\n\n🔥 *${comboName}*\n- 1x ${p1 ? p1.name : 'Item 1'}\n- 1x ${p2 ? p2.name : 'Item 2'}\n\n*Valor Promocional no Pix: R$ ${comboPrice.toFixed(2).replace('.', ',')}*\n*FRETE GRÁTIS INCLUSO!*\n\nComo fazemos o envio?`;
+      
+      window.open(`https://wa.me/${num}?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    // FILTROS E BUSCA
     function filterCategory(cat) {
       document.querySelectorAll('.category-btn').forEach(btn => {
         if (btn.getAttribute('data-category') === cat) {
@@ -691,7 +1000,7 @@
       ));
     }
 
-    // LÓGICA DO CARRINHO
+    // CARRINHO
     function addToCart(id) {
       const p = PRODUCTS.find(item => item.id === id);
       if (!p) return;
@@ -709,6 +1018,7 @@
       const badge = document.getElementById('cartCountBadge');
       const list = document.getElementById('cartItemList');
       const totalEl = document.getElementById('cartTotalPrice');
+      const freeShipBadge = document.getElementById('freeShippingNotice');
 
       const totalItems = cart.reduce((acc, i) => acc + i.qty, 0);
       const totalVal = cart.reduce((acc, i) => acc + (i.pricePix * i.qty), 0);
@@ -721,6 +1031,12 @@
       }
 
       totalEl.innerText = `R$ ${totalVal.toFixed(2).replace('.', ',')}`;
+
+      if (totalVal >= 70) {
+        freeShipBadge.classList.remove('hidden');
+      } else {
+        freeShipBadge.classList.add('hidden');
+      }
 
       if (cart.length === 0) {
         list.innerHTML = `<div class="text-center py-12 text-gray-500 text-xs">Seu carrinho está vazio.</div>`;
@@ -766,18 +1082,23 @@
     function checkoutOrderWhatsApp() {
       if (cart.length === 0) return;
       const num = localStorage.getItem('store_whatsapp') || defaultWhatsApp;
-      let text = "Olá! Gostaria de fechar o seguinte pedido:\n\n";
+      let text = "Olá! Gostaria de fechar o seguinte pedido no site:\n\n";
       let total = 0;
       cart.forEach((item, idx) => {
         const sub = item.pricePix * item.qty;
         total += sub;
         text += `${idx + 1}) *${item.name}*\n   Qtd: ${item.qty}x | Subtotal: R$ ${sub.toFixed(2).replace('.', ',')}\n`;
       });
-      text += `\n*TOTAL NO PIX: R$ ${total.toFixed(2).replace('.', ',')}*\n\nComo combinamos a entrega?`;
+      
+      const frete = total >= 70 ? "GRÁTIS (Pedido acima de R$ 70)" : "R$ 9,90";
+      text += `\n*TOTAL ITENS: R$ ${total.toFixed(2).replace('.', ',')}*`;
+      text += `\n*FRETE:* ${frete}`;
+      text += `\n\nComo combinamos a entrega ou retirada?`;
+
       window.open(`https://wa.me/${num}?text=${encodeURIComponent(text)}`, '_blank');
     }
 
-    // MODAL WHATSAPP
+    // CONFIGURAÇÃO WHATSAPP
     function openConfigModal() {
       document.getElementById('whatsappInput').value = localStorage.getItem('store_whatsapp') || '';
       document.getElementById('configModal').classList.remove('hidden');
