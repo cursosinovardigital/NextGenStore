@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Next Gen Store | Tech & Acessórios Premium</title>
+  <title>Next Gen Store | Tech & Acessórios Premium • Guarulhos/SP</title>
   
   <!-- Tailwind CSS & Font Awesome -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -35,6 +35,7 @@
             'marquee': 'marquee 22s linear infinite',
             'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
             'float': 'float 4s ease-in-out infinite',
+            'badge-pulse': 'badgePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
           },
           keyframes: {
             marquee: {
@@ -42,12 +43,16 @@
               '100%': { transform: 'translateX(-50%)' },
             },
             pulseGlow: {
-              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-              '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+              '0%, 100%': { opacity: '0.35', transform: 'scale(1)' },
+              '50%': { opacity: '0.75', transform: 'scale(1.05)' },
             },
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
               '50%': { transform: 'translateY(-8px)' },
+            },
+            badgePulse: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '.4' }
             }
           }
         }
@@ -80,9 +85,21 @@
     .marquee-container:hover .animate-marquee {
       animation-play-state: paused;
     }
+    /* Estilização moderna e sutil do iframe do mapa no tema dark */
+    .map-dark-filter iframe {
+      filter: invert(90%) hue-rotate(180deg) contrast(95%) brightness(95%);
+    }
+    /* Efeito de brilho nas bordas ao passar o mouse */
+    .motion-card {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .motion-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px -10px rgba(6, 182, 212, 0.22);
+    }
   </style>
 </head>
-<body class="antialiased selection:bg-brand-500 selection:text-white pb-28">
+<body class="antialiased selection:bg-brand-500 selection:text-white pb-20">
 
   <!-- 1. POPUP FLUTUANTE DE COMPRA RECENTE (PROVA SOCIAL DINÂMICA) -->
   <div id="livePurchaseToast" class="fixed bottom-6 left-6 z-50 bg-gray-900/95 border border-gray-700/80 rounded-2xl p-3.5 shadow-2xl backdrop-blur-md flex items-center gap-3.5 transform -translate-x-full opacity-0 transition-all duration-500 max-w-sm pointer-events-none">
@@ -102,15 +119,15 @@
     <div class="flex animate-marquee text-[11px] font-black tracking-wider text-white uppercase gap-8 items-center">
       <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-amber-300"></i> LOTE RELÂMPAGO ENCERRA EM: <span id="marqueeTimer" class="text-amber-300 font-mono tracking-widest font-black">04:32:19</span></span>
       <span class="text-white/40">•</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-emerald-300"></i> RETIRADA PRESENCIAL EM GUARULHOS (MEDIANTE AGENDAMENTO NO WHATSAPP)</span>
+      <span class="text-white/40">•</span>
       <span class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-cyan-300"></i> FRETE FIXO R$ 9,90 | GRÁTIS ACIMA DE R$ 70,00</span>
       <span class="text-white/40">•</span>
       <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-300"></i> DESCONTO EXCLUSIVO NO PIX À VISTA</span>
       <span class="text-white/40">•</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-box-check text-emerald-300"></i> ENTREGA EXPRESSA NO MESMO DIA NA REGIÃO</span>
-      <span class="text-white/40">•</span>
       <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-amber-300"></i> LOTE RELÂMPAGO ENCERRA EM: <span class="text-amber-300 font-mono">04:32:19</span></span>
       <span class="text-white/40">•</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-cyan-300"></i> FRETE FIXO R$ 9,90 | GRÁTIS ACIMA DE R$ 70,00</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-emerald-300"></i> RETIRADA PRESENCIAL EM GUARULHOS (MEDIANTE AGENDAMENTO NO WHATSAPP)</span>
     </div>
   </div>
 
@@ -129,7 +146,7 @@
           <span class="text-xl font-black tracking-tight text-white block leading-none">
             NEXT GEN<span class="text-brand-accent"> STORE</span>
           </span>
-          <span class="text-[9px] font-bold text-gray-400 tracking-widest uppercase">Tech & Accessories</span>
+          <span class="text-[9px] font-bold text-gray-400 tracking-widest uppercase">Tech & Accessories • SP</span>
         </div>
       </a>
 
@@ -148,6 +165,13 @@
 
       <!-- BOTÕES DE CONTATO & CARRINHO -->
       <div class="flex items-center gap-3">
+        <a 
+          href="#retiradaSection" 
+          class="hidden lg:flex items-center gap-2 px-3 py-2 text-xs font-semibold text-gray-300 hover:text-white bg-gray-900/70 hover:bg-gray-800 border border-gray-800 rounded-xl transition-all">
+          <i class="fa-solid fa-location-dot text-brand-accent"></i>
+          <span>Ponto de Retirada</span>
+        </a>
+
         <button 
           onclick="openConfigModal()" 
           class="flex items-center gap-2 px-3 py-2 text-xs font-bold text-gray-300 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-emerald-500/50 rounded-xl transition-all">
@@ -225,7 +249,7 @@
       </div>
     </div>
 
-    <!-- GRADE DE PRODUTOS COM ESCASSEZ E ESTOQUE EM TEMPO REAL -->
+    <!-- GRADE DE PRODUTOS COM ESCASSEZ VISUAL E MICRO-MOTION -->
     <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
 
   </main>
@@ -276,7 +300,7 @@
           </div>
           <h3 class="text-xl sm:text-2xl font-black text-white">Calcule o Frete para sua Região</h3>
           <p class="text-xs text-gray-400 leading-relaxed">
-            Produtos armazenados em São Paulo para pronta entrega. Digite seu CEP para conferir as opções de entrega expressa no mesmo dia ou envio pelos Correios.
+            Produtos armazenados em São Paulo para pronta entrega. Digite seu CEP para conferir as opções de envio rápido ou retirada.
           </p>
 
           <!-- INPUT DE CEP DINÂMICO -->
@@ -284,7 +308,7 @@
             <input 
               type="text" 
               id="simuladorCepInput" 
-              placeholder="Digite seu CEP (Ex: 07000-000)" 
+              placeholder="Digite seu CEP (Ex: 07024-200)" 
               maxlength="9"
               class="flex-1 px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-xl text-xs text-white placeholder-gray-500 focus:outline-none focus:border-brand-accent">
             <button 
@@ -294,7 +318,7 @@
             </button>
           </div>
           <div id="resultadoCepBox" class="text-xs text-emerald-400 font-bold hidden pt-1">
-            <i class="fa-solid fa-check-circle mr-1"></i> CEP atendido com entrega expressa!
+            <i class="fa-solid fa-check-circle mr-1"></i> CEP atendido com entrega expressa e opção de retirada!
           </div>
         </div>
 
@@ -326,13 +350,105 @@
 
             <div class="flex items-center justify-between p-3 rounded-xl bg-gray-900 border border-gray-800">
               <div class="flex items-center gap-2.5">
-                <i class="fa-solid fa-gift text-emerald-400"></i>
+                <i class="fa-solid fa-handshake text-emerald-400"></i>
                 <div>
-                  <span class="text-gray-200 font-bold block">Pedidos a partir de R$ 70,00</span>
-                  <span class="text-[10px] text-gray-500">Qualquer produto do site</span>
+                  <span class="text-gray-200 font-bold block">Retirada Agendada em Mãos</span>
+                  <span class="text-[10px] text-gray-500">Guarulhos/SP (Mediante WhatsApp/Pix)</span>
                 </div>
               </div>
-              <span class="font-black text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">FRETE GRÁTIS</span>
+              <span class="font-black text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">GRÁTIS</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. NOVA SEÇÃO: RETIRADA EXPRESSA COM MAPA INTERATIVO (ESTILO LEFT) -->
+  <section id="retiradaSection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+    <div class="relative rounded-3xl bg-gradient-to-b from-gray-900 via-[#0a0f1d] to-gray-950 border border-cyan-500/30 p-6 sm:p-10 shadow-2xl overflow-hidden">
+      <div class="absolute -top-32 right-1/4 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        
+        <!-- INFORMAÇÕES E REGRA DE RETIRADA -->
+        <div class="lg:col-span-6 space-y-4 text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-bold text-xs">
+            <i class="fa-solid fa-shop text-brand-accent"></i>
+            PONTO FÍSICO DE RETIRADA
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl font-black text-white leading-tight">
+            Retire em Mãos no Mesmo Dia em Guarulhos/SP
+          </h3>
+
+          <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+            Prefere não esperar o frete? Você pode retirar seu pedido diretamente em nosso endereço físico com total segurança e comodidade.
+          </p>
+
+          <!-- REGRA CLARA DE SEGURANÇA / RESERVA -->
+          <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-2">
+            <div class="flex items-center gap-2 text-amber-300 font-black text-xs uppercase tracking-wider">
+              <i class="fa-solid fa-shield-halved"></i>
+              Regra de Retirada Presencial:
+            </div>
+            <p class="text-xs text-amber-100/90 leading-relaxed">
+              Para segurança mútua e reserva imediata do lote no estoque, <strong>a retirada é feita mediante confirmação e pagamento antecipado via WhatsApp / Pix</strong>. Assim que confirmado, seu pacote é embalado e deixado pronto para retirada com horário agendado!
+            </p>
+          </div>
+
+          <!-- ENDEREÇO EM DESTAQUE -->
+          <div class="space-y-2 pt-2 text-xs text-gray-300">
+            <div class="flex items-start gap-3 p-3 bg-gray-950/80 rounded-xl border border-gray-800">
+              <i class="fa-solid fa-location-dot text-brand-accent text-lg mt-0.5"></i>
+              <div>
+                <span class="font-extrabold text-white block text-sm">Rua Doutor Sebastião Ferraz, 44</span>
+                <span class="text-gray-400">Vila Sorocabana • Guarulhos - SP • CEP 07024-200</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 p-3 bg-gray-950/80 rounded-xl border border-gray-800">
+              <i class="fa-solid fa-clock text-emerald-400 text-base"></i>
+              <div>
+                <span class="font-bold text-white block">Horário para Retiradas Agendadas:</span>
+                <span class="text-gray-400">Segunda a Sábado, das 09:00 às 19:30</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- BOTÕES DE AÇÃO DO MAPA -->
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a 
+              href="https://www.google.com/maps/search/?api=1&query=Rua+Doutor+Sebasti%C3%A3o+Ferraz,+44,+Guarulhos+-+SP" 
+              target="_blank"
+              class="px-5 py-3 bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-black text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-cyan-500/20 transition-all">
+              <i class="fa-solid fa-diamond-turn-right text-sm"></i>
+              Abrir no Google Maps / Waze
+            </a>
+            <button 
+              onclick="agendarRetiradaWhatsapp()"
+              class="px-5 py-3 bg-gray-900 hover:bg-gray-800 text-emerald-400 font-bold text-xs rounded-xl border border-emerald-500/40 flex items-center gap-2 transition-all">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              Agendar Retirada no Whats
+            </button>
+          </div>
+        </div>
+
+        <!-- MAPA INCORPORADO (IFRAME ESTILIZADO) -->
+        <div class="lg:col-span-6">
+          <div class="relative rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-2xl p-1 bg-black/60 map-dark-filter">
+            <iframe 
+              src="https://maps.google.com/maps?q=Rua+Doutor+Sebasti%C3%A3o+Ferraz,+44,+Guarulhos+-+SP&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="380" 
+              style="border:0; border-radius: 14px;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="absolute bottom-3 right-3 bg-black/85 backdrop-blur-md px-3 py-1 rounded-lg text-[10px] font-mono text-cyan-400 border border-cyan-500/30 pointer-events-none">
+              <i class="fa-solid fa-map-pin mr-1"></i> GUARULHOS • SP
             </div>
           </div>
         </div>
@@ -348,28 +464,28 @@
         <i class="fa-solid fa-circle-check"></i> CLIENTES 100% SATISFEITOS
       </div>
       <h3 class="text-2xl sm:text-3xl font-black text-white">Quem Comprou, Recomenda</h3>
-      <p class="text-xs text-gray-400 max-w-lg mx-auto">Veja a experiência real de quem recebeu em tempo recorde.</p>
+      <p class="text-xs text-gray-400 max-w-lg mx-auto">Veja a experiência real de quem recebeu em tempo recorde ou retirou conosco.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       
-      <div class="bg-gray-900/80 border border-gray-800 p-6 rounded-2xl space-y-4">
+      <div class="bg-gray-900/80 border border-gray-800 p-6 rounded-2xl space-y-4 motion-card">
         <div class="flex items-center gap-1 text-amber-400 text-xs">
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
         </div>
         <p class="text-xs text-gray-300 italic leading-relaxed">
-          "A máquina com visor me surpreendeu demais! É toda em metal mesmo, pesadinha e corta muito rente sem puxar. Chegou no outro dia de manhã, atendimento 10 pelo WhatsApp!"
+          "A máquina com visor me surpreendeu demais! É toda em metal mesmo, pesadinha e corta muito rente sem puxar. Paguei no Pix e passei pra retirar em Guarulhos no mesmo dia. Atendimento 10!"
         </p>
         <div class="flex items-center gap-3 pt-2 border-t border-gray-800/80">
           <div class="w-8 h-8 rounded-full bg-brand-600/30 text-brand-accent flex items-center justify-center font-black text-xs">RM</div>
           <div>
             <div class="text-xs font-bold text-white">Rodrigo Mendes</div>
-            <div class="text-[10px] text-gray-500">Comprou Máquina Dragão LCD</div>
+            <div class="text-[10px] text-gray-500">Retirou em Mãos • Máquina Dragão LCD</div>
           </div>
         </div>
       </div>
 
-      <div class="bg-gray-900/80 border border-gray-800 p-6 rounded-2xl space-y-4">
+      <div class="bg-gray-900/80 border border-gray-800 p-6 rounded-2xl space-y-4 motion-card">
         <div class="flex items-center gap-1 text-amber-400 text-xs">
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
         </div>
@@ -380,23 +496,23 @@
           <div class="w-8 h-8 rounded-full bg-emerald-600/30 text-emerald-400 flex items-center justify-center font-black text-xs">LC</div>
           <div>
             <div class="text-xs font-bold text-white">Lucas Carvalho</div>
-            <div class="text-[10px] text-gray-500">Comprou 2x Smart Tag GPS</div>
+            <div class="text-[10px] text-gray-500">Envio Correios SP • 2x Smart Tag GPS</div>
           </div>
         </div>
       </div>
 
-      <div class="bg-gray-900/80 border border-gray-800 p-6 rounded-2xl space-y-4">
+      <div class="bg-gray-900/80 border border-gray-800 p-6 rounded-2xl space-y-4 motion-card">
         <div class="flex items-center gap-1 text-amber-400 text-xs">
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
         </div>
         <p class="text-xs text-gray-300 italic leading-relaxed">
-          "Trabalho rodando o dia todo e o transmissor bluetooth salvou meu rádio. Não tem chiado e ainda carrega o celular rápido na saída USB. Valeu cada centavo!"
+          "Trabalho rodando o dia todo no app e o transmissor bluetooth salvou meu rádio. Não tem chiado e ainda carrega o celular rápido na saída USB. Valeu cada centavo!"
         </p>
         <div class="flex items-center gap-3 pt-2 border-t border-gray-800/80">
           <div class="w-8 h-8 rounded-full bg-indigo-600/30 text-indigo-400 flex items-center justify-center font-black text-xs">FS</div>
           <div>
             <div class="text-xs font-bold text-white">Fernando Santana</div>
-            <div class="text-[10px] text-gray-500">Comprou Transmissor Veicular</div>
+            <div class="text-[10px] text-gray-500">Entrega Uber Flash • Transmissor Veicular</div>
           </div>
         </div>
       </div>
@@ -414,11 +530,21 @@
     <div class="space-y-3">
       <details class="bg-gray-900/80 border border-gray-800 rounded-2xl p-4 cursor-pointer group">
         <summary class="font-bold text-xs sm:text-sm text-gray-200 flex items-center justify-between list-none">
+          <span>Como funciona a retirada em mãos na Rua Doutor Sebastião Ferraz?</span>
+          <i class="fa-solid fa-chevron-down text-xs text-gray-500 group-open:rotate-180 transition-transform"></i>
+        </summary>
+        <p class="text-xs text-gray-400 mt-3 pt-3 border-t border-gray-800/80 leading-relaxed">
+          Após escolher seus itens no site, você clica no botão do WhatsApp. Confirmamos a disponibilidade imediata, passamos a chave Pix oficial para reserva e agendamos o horário de retirada no mesmo dia em Guarulhos.
+        </p>
+      </details>
+
+      <details class="bg-gray-900/80 border border-gray-800 rounded-2xl p-4 cursor-pointer group">
+        <summary class="font-bold text-xs sm:text-sm text-gray-200 flex items-center justify-between list-none">
           <span>Como funciona a garantia dos produtos?</span>
           <i class="fa-solid fa-chevron-down text-xs text-gray-500 group-open:rotate-180 transition-transform"></i>
         </summary>
         <p class="text-xs text-gray-400 mt-3 pt-3 border-t border-gray-800/80 leading-relaxed">
-          Todos os produtos são testados individualmente antes do envio. Você tem garantia total de funcionamento e 7 dias para troca ou devolução sem burocracia direto conosco pelo WhatsApp.
+          Todos os produtos são inspecionados antes da entrega. Você conta com garantia contra defeitos de fábrica e 7 dias de garantia incondicional conforme o Código de Defesa do Consumidor.
         </p>
       </details>
 
@@ -438,11 +564,132 @@
           <i class="fa-solid fa-chevron-down text-xs text-gray-500 group-open:rotate-180 transition-transform"></i>
         </summary>
         <p class="text-xs text-gray-400 mt-3 pt-3 border-t border-gray-800/80 leading-relaxed">
-          Sim! Parcelamos em até 3x sem juros no cartão de crédito via link de pagamento seguro ou maquininha na entrega presencial.
+          Sim! Parcelamos em até 3x sem juros no cartão de crédito via link de pagamento protegido com antifraude ou maquininha física.
         </p>
       </details>
     </div>
   </section>
+
+  <!-- 4. NOVO RODAPÉ INSTITUCIONAL DE ALTA CONFIABILIDADE (ESTILO GRANDES E-COMMERCES) -->
+  <footer class="mt-20 border-t border-gray-800 bg-[#060911] text-gray-400 text-xs">
+    
+    <!-- BARRA DE SELOS DE SEGURANÇA E CONFIANÇA -->
+    <div class="border-b border-gray-800/80 py-8 bg-[#080d18]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center sm:text-left">
+        <div class="flex items-center gap-3 justify-center sm:justify-start">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-lg">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+          <div>
+            <h5 class="text-xs font-bold text-white">Ambiente 100% Seguro</h5>
+            <p class="text-[10px] text-gray-400">Criptografia SSL de 256 bits</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 justify-center sm:justify-start">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-lg">
+            <i class="fa-solid fa-shield-check"></i>
+          </div>
+          <div>
+            <h5 class="text-xs font-bold text-white">Garantia Verificada</h5>
+            <p class="text-[10px] text-gray-400">Troca rápida sem burocracia</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 justify-center sm:justify-start">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-lg">
+            <i class="fa-solid fa-box-check"></i>
+          </div>
+          <div>
+            <h5 class="text-xs font-bold text-white">Estoque Físico em SP</h5>
+            <p class="text-[10px] text-gray-400">Envio imediato ou retirada</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 justify-center sm:justify-start">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-lg">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <div>
+            <h5 class="text-xs font-bold text-white">Suporte Humanizado</h5>
+            <p class="text-[10px] text-gray-400">Atendimento 1 a 1 no WhatsApp</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUNAS INSTITUCIONAIS -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-12 gap-8">
+      
+      <!-- COLUNA 1: IDENTIDADE -->
+      <div class="md:col-span-4 space-y-3">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-accent p-0.5 flex items-center justify-center">
+            <i class="fa-solid fa-bolt text-slate-950 font-black text-sm"></i>
+          </div>
+          <span class="text-lg font-black text-white tracking-tight">NEXT GEN STORE</span>
+        </div>
+        <p class="text-xs text-gray-400 leading-relaxed">
+          E-commerce especializado em produtos tecnológicos, acessórios automotivos e utilidades validadas. Foco em atendimento ágil, transparência e preço justo no Pix.
+        </p>
+        <div class="pt-2">
+          <span class="inline-flex items-center gap-2 text-[11px] text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-500/30 px-3 py-1 rounded-lg">
+            <i class="fa-solid fa-circle text-[7px] animate-pulse"></i> Estoque Próprio em São Paulo
+          </span>
+        </div>
+      </div>
+
+      <!-- COLUNA 2: ENDEREÇO & RETIRADA -->
+      <div class="md:col-span-4 space-y-2">
+        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-location-dot text-brand-accent"></i> Ponto de Retirada Presencial
+        </h4>
+        <p class="text-xs text-gray-300 font-semibold leading-relaxed">
+          Rua Doutor Sebastião Ferraz, 44<br>
+          <span class="text-gray-400 font-normal">Vila Sorocabana • Guarulhos - SP<br>CEP: 07024-200</span>
+        </p>
+        <p class="text-[11px] text-amber-300 pt-1">
+          <i class="fa-solid fa-triangle-exclamation mr-1"></i> Retiradas com agendamento e pagamento prévio no WhatsApp.
+        </p>
+      </div>
+
+      <!-- COLUNA 3: FORMAS DE PAGAMENTO E CONTATO -->
+      <div class="md:col-span-4 space-y-3">
+        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Formas de Pagamento</h4>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="px-2.5 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-teal-300 flex items-center gap-1.5 font-bold">
+            <i class="fa-brands fa-pix text-sm"></i> Pix (Desconto Máximo)
+          </span>
+          <span class="px-2.5 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-gray-300 flex items-center gap-1.5">
+            <i class="fa-solid fa-credit-card text-amber-400"></i> Cartão de Crédito
+          </span>
+          <span class="px-2.5 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-gray-300 flex items-center gap-1.5">
+            <i class="fa-solid fa-barcode text-cyan-400"></i> Boleto Bancário
+          </span>
+        </div>
+
+        <div class="pt-2">
+          <button 
+            onclick="openConfigModal()" 
+            class="w-full py-2.5 px-3 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-emerald-500/50 rounded-xl text-xs font-bold text-emerald-400 flex items-center justify-center gap-2 transition-all">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            Configurar WhatsApp Vendedor
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ASSINATURA INFERIOR LEGAL -->
+    <div class="border-t border-gray-800/80 py-6 bg-black/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-gray-500">
+        <p>© 2026 Next Gen Store. Todos os direitos reservados. Fotos originais do catálogo físico.</p>
+        <p class="flex items-center gap-2">
+          <i class="fa-solid fa-shield text-emerald-500"></i> Site Seguro com Checkout WhatsApp Direto
+        </p>
+      </div>
+    </div>
+  </footer>
 
   <!-- MODAL DE PRODUTO COMPLETO COM CROSS-SELL E VÍDEO -->
   <div id="productModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
@@ -697,7 +944,7 @@
           toast.classList.add('-translate-x-full', 'opacity-0');
         }, 5000);
 
-      }, 16000); // Dispara a cada 16 segundos
+      }, 16000);
     }
 
     // CARROSSEL HERO
@@ -783,14 +1030,14 @@
       setupSliderAutoplay();
     }
 
-    // GRADE DE PRODUTOS COM ESCASSEZ VISUAL
+    // GRADE DE PRODUTOS COM ESCASSEZ VISUAL E MOTION
     function renderProducts(items = PRODUCTS) {
       const grid = document.getElementById('productGrid');
       grid.innerHTML = '';
 
       items.forEach(product => {
         const card = document.createElement('div');
-        card.className = "bg-gray-900/90 border border-gray-800 hover:border-gray-700 rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:shadow-black/60 hover:-translate-y-1";
+        card.className = "bg-gray-900/90 border border-gray-800 hover:border-cyan-500/50 rounded-2xl overflow-hidden flex flex-col group motion-card hover:shadow-xl hover:shadow-black/60";
         
         card.innerHTML = `
           <div class="relative bg-black/40 p-5 aspect-square flex items-center justify-center overflow-hidden cursor-pointer" onclick="openProductModal(${product.id})">
@@ -958,7 +1205,7 @@
       if (!p) return;
 
       const num = localStorage.getItem('store_whatsapp') || defaultWhatsApp;
-      const text = `Olá! Vi no site da Next Gen Store e quero fechar o pedido:\n\n*${p.name}*\nCódigo: ${p.code}\nPreço no Pix: R$ ${p.pricePix.toFixed(2).replace('.', ',')}\n\nFrete fixo: R$ 9,90 (ou grátis acima de R$ 70)\nPodemos combinar o envio/entrega?`;
+      const text = `Olá! Vi no site da Next Gen Store e quero fechar o pedido:\n\n*${p.name}*\nCódigo: ${p.code}\nPreço no Pix: R$ ${p.pricePix.toFixed(2).replace('.', ',')}\n\nForma desejada: Entrega ou Retirada na R. Dr. Sebastião Ferraz, 44?\nPodemos combinar os detalhes e a chave Pix?`;
       
       window.open(`https://wa.me/${num}?text=${encodeURIComponent(text)}`, '_blank');
     }
@@ -969,8 +1216,15 @@
       const p2 = PRODUCTS.find(p => p.id === id2);
       const num = localStorage.getItem('store_whatsapp') || defaultWhatsApp;
 
-      const text = `Olá! Quero aproveitar a oferta do Combo Especial:\n\n🔥 *${comboName}*\n- 1x ${p1 ? p1.name : 'Item 1'}\n- 1x ${p2 ? p2.name : 'Item 2'}\n\n*Valor Promocional no Pix: R$ ${comboPrice.toFixed(2).replace('.', ',')}*\n*FRETE GRÁTIS INCLUSO!*\n\nComo fazemos o envio?`;
+      const text = `Olá! Quero aproveitar a oferta do Combo Especial:\n\n🔥 *${comboName}*\n- 1x ${p1 ? p1.name : 'Item 1'}\n- 1x ${p2 ? p2.name : 'Item 2'}\n\n*Valor Promocional no Pix: R$ ${comboPrice.toFixed(2).replace('.', ',')}*\n*FRETE GRÁTIS INCLUSO!*\n\nComo fazemos o envio ou retirada em Guarulhos?`;
       
+      window.open(`https://wa.me/${num}?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    // AGENDAR RETIRADA DIRETO PELO MAPA
+    function agendarRetiradaWhatsapp() {
+      const num = localStorage.getItem('store_whatsapp') || defaultWhatsApp;
+      const text = `Olá! Gostaria de agendar uma retirada presencial em mãos no endereço:\n\nRua Doutor Sebastião Ferraz, 44 - Guarulhos/SP\n\nQuais produtos estão disponíveis para eu reservar agora via Pix?`;
       window.open(`https://wa.me/${num}?text=${encodeURIComponent(text)}`, '_blank');
     }
 
@@ -1032,6 +1286,7 @@
 
       totalEl.innerText = `R$ ${totalVal.toFixed(2).replace('.', ',')}`;
 
+      // Alerta de frete grátis acima de R$ 70
       if (totalVal >= 70) {
         freeShipBadge.classList.remove('hidden');
       } else {
@@ -1090,10 +1345,10 @@
         text += `${idx + 1}) *${item.name}*\n   Qtd: ${item.qty}x | Subtotal: R$ ${sub.toFixed(2).replace('.', ',')}\n`;
       });
       
-      const frete = total >= 70 ? "GRÁTIS (Pedido acima de R$ 70)" : "R$ 9,90";
+      const frete = total >= 70 ? "GRÁTIS (Pedido acima de R$ 70)" : "R$ 9,90 ou Retirada em Guarulhos";
       text += `\n*TOTAL ITENS: R$ ${total.toFixed(2).replace('.', ',')}*`;
-      text += `\n*FRETE:* ${frete}`;
-      text += `\n\nComo combinamos a entrega ou retirada?`;
+      text += `\n*FRETE/ENTREGA:* ${frete}`;
+      text += `\n\nPodemos combinar o pagamento no Pix e os detalhes de retirada/envio?`;
 
       window.open(`https://wa.me/${num}?text=${encodeURIComponent(text)}`, '_blank');
     }
@@ -1123,3 +1378,4 @@
   </script>
 </body>
 </html>
+```
